@@ -1,0 +1,135 @@
+@import 'const';
+.wrap-teacher{		
+	
+	.teacher__content{		
+		width: 80em;
+		height: 500px; 	
+
+		.teacher__title{
+			display: flex;
+			align-items: center;
+			justify-content: space-between;			
+			margin-bottom: 10px;
+			.btn-add-teacher{
+				text-align: right;
+				margin-right: 30px;
+				--width: 40px;
+				--margin-left: 96%;		
+				button{
+					width: 120px;
+				}
+			}
+		}
+		
+		.content__list{										
+
+			.item{
+				box-shadow: 1px 2px 10px #ddd;
+				border-radius: 5px;
+				height: 40px;				
+				
+				background-color: #fff;
+				display: flex;
+				align-items: center;
+				margin-bottom: 5px;				
+				&:hover{					
+					border: 1px solid black;					
+				}
+			}
+
+			.head{
+				font-weight: bold;						
+				
+			}
+		}
+
+		.teacher{
+			width: 100px;
+			border-radius: 10px;
+			background-color: red;
+		}
+
+		//form 
+		.wrap-form{			
+			width: 80em;
+			--height: 500px;
+			display: flex;
+			
+			.form__left{
+				width: 30%;
+				height: 400px;
+				padding: 0 20px;
+				
+				.left__infor{
+					width: 100%;
+					border: 1px solid red;
+					height: 400px;
+					margin-bottom: 20px;
+
+					background-color: #fff;
+					border-radius: 15px;
+
+					.avatar{
+						width: 200px;
+						height: 200px;
+						border-radius: 50%;
+						border: 1px solid red; 
+					}
+					.btn-avatar{
+						display: flex;
+						align-items: center;
+						--justify-content: flex-end;
+						
+						margin-left: 60px;
+
+					}
+
+				}
+				.left__more{
+					width: 100%;
+					border: 1px solid red;
+					height: 200px;
+					
+					border-radius: 15px;
+				}
+			}				
+			.form__right{
+				padding: 10px;
+				width: 70%;
+				height: 500px;
+				border: 1px solid blue;
+				
+				border-radius: 15px;
+				background-color: #fff;
+
+
+				form{	
+
+					.control{						
+						
+						width: 80%;
+						margin-left: 10px;
+						display: flex;						
+						align-items: center;
+
+						margin-bottom: 10px;	
+						lable{
+							text-align: left;
+
+						}
+
+						button{
+							width: 100px;
+							margin-left: 5px;
+						}
+					}
+					.control-button{
+						display: flex;
+						justify-content: flex-end;
+					}
+					
+				}
+			}		
+		}
+	}
+}

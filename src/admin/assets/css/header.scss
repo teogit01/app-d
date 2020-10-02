@@ -1,0 +1,19 @@
+@import 'const';
+.header{
+	
+	height: $h-title;
+	display: flex;
+	padding: 0 50px;
+
+	.title{
+		width: 50%;
+		display: flex;
+		align-items: center;					
+	}
+	.control{
+		width: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+	}
+}
