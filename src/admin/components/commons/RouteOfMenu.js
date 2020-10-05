@@ -8,6 +8,8 @@ import ListTeacher from 'admin/components/teachers/ListTeacher'
 import AddTeacher from 'admin/components/teachers/AddTeacher'
 import ListSubject from 'admin/components/subjects/ListSubject'
 import ListQuestion from 'admin/components/questions/ListQuestion'
+import AddQuestion from 'admin/components/questions/AddQuestion'
+import DetailQuestion from 'admin/components/questions/DetailQuestion'
 
 
 function User1(){
@@ -25,7 +27,10 @@ function RouteOfMenu(props) {
 				<Route path={`${match.url}/teacher/add`} component={ AddTeacher }/>
 
 				<Route path={`${match.url}/subject`} component={ ListSubject }/>
-				<Route path={`${match.url}/question`} component={ ListQuestion }/>				
+				<Route path={`${match.url}/question`} exact component={ ListQuestion }/>				
+				<Route path={`${match.url}/question/add`} component={ AddQuestion }/>				
+				<Route path={`${match.url}/question/detail`} component={ DetailQuestion }/>				
+
 				<Route path={`${match.url}/list`} exact component={ User1 }/>
 				
 

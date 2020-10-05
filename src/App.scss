@@ -20,7 +20,7 @@
     .admin__main{
     	margin-left: 20%;	
     	width: 80%;
-    	height: 700px;
+    	height: 1000px;
     	border: 1px solid black;
     	
     }
@@ -46,8 +46,17 @@
   .mr-r-30{
   	margin-right: 30px;
   }
+
+  // padding:
+  .p-l-30{
+    padding-left: 30px;    
+  }
+
   .width-60{
   	width: 60px;
+  }
+  .w120{
+    width: 120px;
   }
 
   .active{
@@ -66,6 +75,10 @@
 
   .ic-add{
     background-color: transparent;
+  }
+
+  .bold{
+    font-weight: bold;        
   }
 }
 

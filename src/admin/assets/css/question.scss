@@ -3,7 +3,7 @@
 
 	.question__content{		
 		width: 80em;
-		height: 500px; 	
+		--height: 500px; 			
 
 		.question__title{
 			display: flex;
@@ -90,7 +90,54 @@
 					
 				}
 
+			}
+			&--form-add{
+				width: 100%;				
+				background-color: #fff;
 
+				box-shadow: 5px 5px 15px #bbb;
+				border-radius: 5px;
+				padding: 10px 20px;
+
+				form{
+					--display: flex;
+					--justify-self: flex-start;
+
+					.fill-control{
+						width: 100%;
+						display: flex;
+						justify-content: flex-start;
+						margin-bottom: 10px;
+						
+						label{
+							width: 200px;								
+							text-align: left;
+						}
+					}
+					.dapan{						
+						display: flex;		
+						margin-bottom: 10px;
+						label{
+							width: 200px;	
+							text-align: left;							
+						}									
+
+						&__item{
+							width: 100%;													
+							select{
+								margin-bottom: 10px;
+							}
+						}
+
+					}					
+					.button{
+						width: 100%;
+						text-align: right;
+						button{
+							margin-right: 10px;
+						}						
+					}
+				}
 			}
 		}
 

@@ -16,6 +16,9 @@ function ListQuestion() {
   const redirect = ()=>{
     history.push(`${match.url}/add`)
   }
+  const detail = ()=>{
+    history.push(`${match.url}/detail`)
+  }
   
     return (
       <div className='wrap-question'>
@@ -46,7 +49,7 @@ function ListQuestion() {
                 <div className='bgw col-2'>Action</div>                
               </div>                                
 
-              <div className='item col-12'>
+              <div className='item col-12' onClick={ detail }>
                 <div className='bgw col-1 '>1</div>
                 <div className='bgw col-2'>ch2</div>
                 <div className='bgw col-2'>Câu 2</div>                                 
