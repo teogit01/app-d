@@ -1,0 +1,112 @@
+@import 'assets/constant/const-css';
+
+.wrap-exam {
+    text-align: left;
+
+    //main page
+    .page-main {
+        .page-add {
+            display: none;
+        }
+
+        .list {
+            background-color: #fff;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: .1s;
+            border: 1px solid #fff;
+
+
+            &:hover {
+                --border: 1px solid #999;
+                background-color: $color-bg;
+            }
+        }
+
+        .head {
+            font-weight: bold;
+
+            &:hover {
+                // border: 1px solid #fff;
+                background-color: #fff;
+            }
+        }
+
+    }
+
+    // add page
+    .page-add {
+
+        // //form add        
+        .form-add {
+
+            width: 95%;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+
+            .control {
+                display: flex;
+                justify-content: flex-end;
+
+                .button {
+                    width: 120px;
+                    margin-left: 10px;
+                }
+            }
+
+            .da {
+                border: 1px solid green;
+            }
+        }
+    }
+
+    // page ddetail
+    .page-detail {
+        width: 95%;
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .head {
+        font-weight: bold;
+    }
+
+    .control {
+        display: flex;
+        justify-content: flex-end;
+
+        .button {
+            width: 120px;
+            margin-left: 10px;
+        }
+    }
+
+    .phuong-an {
+        --width: 100%;
+        --display: flex;
+
+        &--item {
+            width: 40%;
+        }
+    }
+}
+
+.press-add {
+    position: fixed;
+    right: 90px;
+    top: 80px;
+    z-index: 1;
+}
+
+hr {
+    width: 100%;
+    display: flex;
+    justify-self: flex-start;
+}

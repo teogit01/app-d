@@ -20,7 +20,7 @@ function ListSubject() {
 
           <div className='subject__title'>
             
-            <h4>Danh sách môn thi</h4>            
+            <h4 className='bold p-l-30'>Danh sách môn thi</h4>            
 
           </div>          
         

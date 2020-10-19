@@ -48,6 +48,15 @@ function AddQuestion() {
 
                 <div className='fill-control'>
                   <label>
+                    Loại câu hỏi:
+                  </label>
+                  <select className='form-control'>
+                    <option>Trắc nghiệm</option>
+                  </select>
+                </div>
+
+                <div className='fill-control'>
+                  <label>
                     Nội dung câu hỏi:
                   </label>
                   <textarea className='form-control' rows='5'>

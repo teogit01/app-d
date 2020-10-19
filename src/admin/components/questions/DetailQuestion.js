@@ -43,14 +43,23 @@ function DetailQuestion() {
                   <label>
                     Tiêu đề câu hỏi:
                   </label>
-                  <input type='text' className='form-control' />
+                  <input type='text' className='form-control' value='Tiêu đề câu hỏi' />
+                </div>
+
+                <div className='fill-control'>
+                  <label>
+                    Loại câu hỏi:
+                  </label>
+                  <select className='form-control'>
+                    <option>Trắc nghiệm</option>
+                  </select>
                 </div>
 
                 <div className='fill-control'>
                   <label>
                     Nội dung câu hỏi:
                   </label>
-                  <textarea className='form-control' rows='5'>
+                  <textarea className='form-control' rows='5' value='Nội dung câu hỏi'>
                     
                   </textarea>
                 </div>
@@ -58,10 +67,11 @@ function DetailQuestion() {
                 <div className='dapan'>
                   <label>
                     Phương án A: &nbsp;&nbsp;
-                    <input type='radio' name='dapan' value="A" className='' />
+                    <input type='radio' name='dapan' value="A" checked className='' />
                   </label>                             
                   <div className='dapan__item'>
                     <select className='form-control'>                      
+                      <option>Phương an 1</option>
                     </select>    
                     <textarea className='form-control'>                      
                     </textarea>              
@@ -75,6 +85,7 @@ function DetailQuestion() {
                   </label>                             
                   <div className='dapan__item'>
                     <select className='form-control'>                      
+                      <option>Phương an 1</option>
                     </select>    
                     <textarea className='form-control'>                      
                     </textarea>              
@@ -88,6 +99,7 @@ function DetailQuestion() {
                   </label>                             
                   <div className='dapan__item'>
                     <select className='form-control'>                      
+                      <option>Phương an 1</option>
                     </select>    
                     <textarea className='form-control'>                      
                     </textarea>              
@@ -100,7 +112,8 @@ function DetailQuestion() {
                     <input type='radio' name='dapan' value="D" className='' />
                   </label>                             
                   <div className='dapan__item'>
-                    <select className='form-control'>                      
+                    <select className='form-control'>      
+                      <option>Phương an 1</option>                
                     </select>    
                     <textarea className='form-control'>                      
                     </textarea>              

@@ -1,0 +1,75 @@
+@import 'assets/constant/const-css';
+
+.wrap-test {
+    text-align: left;
+    margin-left: -30px;
+
+    .page-main {
+        width: 100%;
+
+        .list {
+            background-color: #fff;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: .1s;
+            border: 1px solid #fff;
+
+            &:hover {
+                --border: 1px solid #999;
+                background-color: $color-bg;
+            }
+        }
+
+        .head {
+            font-weight: bold;
+
+            &:hover {
+                background-color: #fff;
+            }
+        }
+    }
+
+    //page-add
+    .page-add {
+        width: 75%;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px 10px;
+        border-radius: 5px;
+
+
+        .form {
+            .field {
+                display: flex;
+                margin-bottom: 30px;
+            }
+
+            .time {
+                display: flex;
+
+                .field {
+                    display: flex;
+
+                    width: 50%;
+                }
+            }
+
+            .control {
+                display: flex;
+                justify-content: flex-end;
+
+                .button {
+                    width: 120px;
+                    margin-left: 10px;
+                }
+            }
+
+        }
+    }
+
+}
