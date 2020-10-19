@@ -1,0 +1,98 @@
+@import 'assets/constant/const-css';
+
+.wrap-user {
+    text-align: left;
+    margin-left: 30px;
+
+    //main page
+    .page-main {
+        width: 95%;
+        display: flex;
+        margin-left: -30px;
+
+        .gv,
+        .sv {
+            width: 250px;
+            height: 350px;
+            background-color: #fff;
+            border-radius: 10px;
+            margin-left: 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    // page-teach
+    .page-teach {
+
+        .list-teach {
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+
+            .teach {
+                width: 250px;
+                height: 320px;
+                background-color: #fff;
+                margin-right: 20px;
+
+                border-radius: 10px;
+                margin-bottom: 20px;
+                padding: 0 20px;
+
+                label {
+                    font-size: 13px;
+                }
+
+                .avatar {
+                    height: 100px;
+                    width: 100px;
+                    border: 1px solid #ddd;
+                    border-radius: 50px;
+                    margin: 5px auto;
+                }
+
+                .infor {
+                    .title {
+                        width: 30%;
+                    }
+                }
+            }
+        }
+    }
+
+    //page-teach-detail
+    .page-teach-detail {
+        .content {
+            display: flex;
+
+            .left {
+                width: 20%;
+                height: 300px;
+                border-radius: 10px;
+                background-color: #fff;
+                margin-right: 30px;
+            }
+
+            .right {
+                width: 70%;
+                height: 300px;
+                border-radius: 10px;
+                background-color: #fff;
+                text-align: center;
+                padding: 10px;
+
+                .bold {
+                    font-weight: bold;
+                }
+            }
+        }
+
+    }
+}

@@ -13,71 +13,74 @@ function ListQuestion() {
   let history = useHistory()
   let match = useRouteMatch()
 
-  const redirect = ()=>{
+  const redirect = () => {
     history.push(`${match.url}/add`)
   }
-  
-    return (
-      <div className='wrap-question'>
+  const detail = () => {
+    history.push(`${match.url}/detail`)
+  }
 
-        <Header />
-        
-        <div className='question__content'>
+  return (
+    <div className='wrap-question'>
 
-          <div className='question__title'>
-            
-            <h4>Danh sách câu hỏi</h4>            
+      <Header />
 
-            <div className='btn-add-question'>
-              {/*<FontAwesomeIcon className='ic ic-add' icon="user-plus" />*/}
-              <button className='btn btn-info' onClick={ redirect }>Thêm</button>
-            </div>
+      <div className='question__content'>
 
-          </div>          
-        
-          <div className='question__main'>          
-                
-            <div className='list'>
-              <div className='item head col-12'>
-                <div className='bgw col-1 '>#</div>
-                <div className='bgw col-2'>Mã câu hỏi</div>
-                <div className='bgw col-2'>Tên</div>                                 
-                <div className='bgw col-5'>Nội dung</div>                                 
-                <div className='bgw col-2'>Action</div>                
-              </div>                                
+        <div className='question__title'>
 
-              <div className='item col-12'>
-                <div className='bgw col-1 '>1</div>
-                <div className='bgw col-2'>ch2</div>
-                <div className='bgw col-2'>Câu 2</div>                                 
-                <div className='bgw col-5'>Đây là câu hỏi 2 nge</div>                                 
-                <div className='bgw col-2'>xoá</div>                
-              </div>       
+          <h4 className='bold p-l-30'>Danh sách câu hỏi</h4>
 
-               <div className='item col-12'>
-                <div className='bgw col-1 '>2</div>
-                <div className='bgw col-2'>ch1</div>
-                <div className='bgw col-2'>Câu 1</div>                                 
-                <div className='bgw col-5'>Đây là câu hỏi 1 nge</div>                                 
-                <div className='bgw col-2'>xoá</div>                
-              </div>       
-
-               <div className='item col-12'>
-                <div className='bgw col-1 '>3</div>
-                <div className='bgw col-2'>ch1</div>
-                <div className='bgw col-2'>Câu 1</div>                                 
-                <div className='bgw col-5'>Đây là câu hỏi 1 nge</div>                                 
-                <div className='bgw col-2'>xoá</div>                
-              </div>                                
-
-            </div>                     
-                                                                                                
-          </div>           
+          <div className='btn-add-question'>
+            {/*<FontAwesomeIcon className='ic ic-add' icon="user-plus" />*/}
+            <button className='btn btn-info' onClick={redirect}>Thêm</button>
+          </div>
 
         </div>
-                  
+
+        <div className='question__main'>
+
+          <div className='list'>
+            <div className='item head col-12'>
+              <div className='bgw col-1 '>#</div>
+              <div className='bgw col-2'>Mã câu hỏi</div>
+              <div className='bgw col-2'>Tên</div>
+              <div className='bgw col-5'>Nội dung</div>
+              <div className='bgw col-2'>Action</div>
+            </div>
+
+            <div className='item col-12' onClick={detail}>
+              <div className='bgw col-1 '>1</div>
+              <div className='bgw col-2'>ch2</div>
+              <div className='bgw col-2'>Câu 2</div>
+              <div className='bgw col-5'>Đây là câu hỏi 2 nge</div>
+              <div className='bgw col-2'>xoá</div>
+            </div>
+
+            <div className='item col-12'>
+              <div className='bgw col-1 '>2</div>
+              <div className='bgw col-2'>ch1</div>
+              <div className='bgw col-2'>Câu 1</div>
+              <div className='bgw col-5'>Đây là câu hỏi 1 nge</div>
+              <div className='bgw col-2'>xoá</div>
+            </div>
+
+            <div className='item col-12'>
+              <div className='bgw col-1 '>3</div>
+              <div className='bgw col-2'>ch1</div>
+              <div className='bgw col-2'>Câu 1</div>
+              <div className='bgw col-5'>Đây là câu hỏi 1 nge</div>
+              <div className='bgw col-2'>xoá</div>
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
-    );
+
+    </div>
+  );
 }
 
 export default ListQuestion;

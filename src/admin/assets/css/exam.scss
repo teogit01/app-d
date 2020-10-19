@@ -1,16 +1,16 @@
 @import 'const';
-.wrap-question{		
+.wrap-exam{		
 
-	.question__content{		
+	.exam__content{		
 		width: 80em;
 		--height: 500px; 			
 
-		.question__title{
+		.exam__title{
 			display: flex;
 			align-items: center;
 			justify-content: space-between;			
 			margin-bottom: 10px;
-			.btn-add-question{
+			.btn-add-exam{
 				text-align: right;
 				margin-right: 30px;
 				--width: 40px;
@@ -21,7 +21,7 @@
 			}
 		}
 		
-		.question__main{										
+		.exam__main{										
 			display: flex;
 			padding: 0 30px;
 			.list{				
@@ -113,6 +113,21 @@
 							width: 200px;								
 							text-align: left;
 						}
+						.number_question{		
+							display: flex;
+							align-items: center;							
+							justify-content: center;																			
+						}
+						.number_question_first{		
+							justify-content: flex-start;
+							width: 10%;
+						}
+						.cauhoi{
+							width: 9.5%;							
+						}
+						.add_question{
+							
+						}
 					}
 					.dapan{						
 						display: flex;		
@@ -141,7 +156,7 @@
 			}
 		}
 
-		.question{
+		.exam{
 			width: 100px;
 			border-radius: 10px;
 			background-color: red;

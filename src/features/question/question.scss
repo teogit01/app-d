@@ -1,0 +1,130 @@
+@import 'assets/constant/const-css';
+
+.wrap-question {
+    text-align: left;
+
+    //main page
+    .wrap-main {
+
+        // start page add
+        .press-add {
+            position: fixed;
+            right: 90px;
+            top: 80px;
+            z-index: 1;
+        }
+
+        .type-question {
+            width: 95%;
+        }
+
+        hr {
+            width: 100%;
+            display: flex;
+            justify-self: flex-start;
+        }
+
+        // end page add
+        .list {
+            background-color: #fff;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: .1s;
+            border: 1px solid #fff;
+
+
+            &:hover {
+                --border: 1px solid #999;
+                background-color: $color-bg;
+            }
+        }
+
+        .head {
+            font-weight: bold;
+
+            &:hover {
+                // border: 1px solid #fff;
+                background-color: #fff;
+            }
+        }
+
+        //form add
+        .form-trac-nghiem,
+        .form-tu-luan {
+
+            width: 95%;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+
+            .control {
+                display: flex;
+                justify-content: flex-end;
+
+                .button {
+                    width: 120px;
+                    margin-left: 10px;
+                }
+            }
+
+            .da {
+                border: 1px solid green;
+            }
+        }
+
+        .isNone {
+            display: none;
+        }
+
+        .isShow {
+            display: block;
+            --display: none;
+        }
+    }
+
+    // page-detail
+    .page-detail {
+        .content {
+            text-align: center;
+            background-color: #fff;
+            border-radius: 10px;
+            width: 98%;
+            padding: 20px;
+
+
+            .infor {
+                width: 60%;
+                text-align: left;
+                margin: 0 auto;
+                padding: 20px;
+
+                .control {
+                    width: 100%;
+                    margin-bottom: 10px;
+
+                    .da {
+                        border: 1px solid green;
+                    }
+
+                }
+            }
+
+            .button {
+                width: 60%;
+                text-align: left;
+                margin: 0 auto;
+                padding: 20px;
+                text-align: right;
+            }
+        }
+    }
+
+    .bold {
+        font-weight: bold;
+    }
+}
