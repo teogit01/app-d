@@ -11,12 +11,12 @@ function AddSubject() {
     return (
       <form>
        <div className='control'>
-         <lable className='col-12'> Mã lớp: </lable>
+         <lable className='col-12'> Mã môn: </lable>
          <input type='text' className='form-control col-12' />
        </div>                        
 
        <div className='control'>
-         <lable className='col-12'> Tên lớp: </lable>
+         <lable className='col-12'> Tên môn: </lable>
          <input type='text' className='form-control col-12' />
        </div>      
 
