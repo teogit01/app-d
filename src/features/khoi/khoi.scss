@@ -1,0 +1,62 @@
+@import 'assets/constant/const-css';
+
+.wrap-page-khoi {
+    text-align: left;
+
+    .page-main {
+        width: 95%;
+        display: flex;
+
+        .right {
+            width: 70%;
+            margin-left: 30px;
+
+            .list {
+                background-color: #fff;
+                height: 35px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+
+                border-radius: 5px;
+                margin-bottom: 10px;
+                transition: .1s;
+                border: 1px solid #fff;
+
+
+                &:hover {
+                    --border: 1px solid #999;
+                    background-color: $color-bg;
+                }
+            }
+
+            .head {
+                font-weight: bold;
+
+                &:hover {
+                    // border: 1px solid #fff;
+                    background-color: #fff;
+                }
+            }
+        }
+
+        .left {
+            width: 30%;
+            background-color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            ;
+
+            form {
+                .control {
+                    text-align: right;
+
+                    button {
+                        width: 100%;
+                    }
+                }
+
+            }
+        }
+    }
+}

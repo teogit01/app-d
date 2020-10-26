@@ -29,14 +29,17 @@
     }
 
     // page-teach
-    .page-teach {
+    .page-teach,
+    .page-student {
 
-        .list-teach {
+        .list-teach,
+        .list-student {
             display: flex;
             width: 100%;
             flex-wrap: wrap;
 
-            .teach {
+            .teach,
+            .student {
                 width: 250px;
                 height: 320px;
                 background-color: #fff;
@@ -64,17 +67,22 @@
                     }
                 }
             }
+
+            .student {
+                height: 300px;
+            }
         }
     }
 
     //page-teach-detail
-    .page-teach-detail {
+    .page-teach-detail,
+    .page-student-detail {
         .content {
             display: flex;
 
             .left {
                 width: 20%;
-                height: 300px;
+                height: 450px;
                 border-radius: 10px;
                 background-color: #fff;
                 margin-right: 30px;
@@ -82,11 +90,56 @@
 
             .right {
                 width: 70%;
-                height: 300px;
+                height: 450px;
                 border-radius: 10px;
                 background-color: #fff;
-                text-align: center;
+                --text-align: center;
                 padding: 10px;
+
+                .title {
+                    text-align: center;
+                }
+
+                .infor {
+                    --padding: 0 30px;
+                    margin: 0 auto;
+                    width: 80%;
+
+                    .field {
+                        margin-bottom: 10px;
+                        height: 30px;
+                        display: flex;
+
+                        label {
+                            width: 30%;
+                            height: 30px;
+                            display: flex;
+                            align-items: flex-end;
+                        }
+
+                        input {
+                            height: 30px;
+                            width: 70%;
+                            border: none;
+                            border-bottom: 1px solid #ddd;
+
+                            &:focus {
+                                outline: none;
+                            }
+                        }
+
+                    }
+
+                    .control {
+                        display: flex;
+                        justify-content: flex-end;
+
+                        button {
+                            width: 20%;
+                            margin-left: 5px;
+                        }
+                    }
+                }
 
                 .bold {
                     font-weight: bold;

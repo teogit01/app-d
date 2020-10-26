@@ -12,7 +12,6 @@ const menus = [
 	{ name: 'Đề thi', to: '/admin/exam', exact: false },
 	{ name: 'Giáo viên', to: '/admin/teacher', exact: false },
 	{ name: 'Loại câu hỏi', to: '/admin/question/type', exact: false },
-
 ]
 
 function Li({ label, to, activeOnlyWhenExact }) {

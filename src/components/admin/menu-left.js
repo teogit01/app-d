@@ -13,11 +13,12 @@ const menus = [
     { name: 'DASHBOARD', to: '/admin', exact: true },
     { name: 'Lớp', to: '/admin/class', exact: false },
     { name: 'Môn Thi', to: '/admin/subject', exact: false },
+    { name: 'Khối', to: '/admin/khoi', exact: false },
     { name: 'Câu hỏi', to: '/admin/question', exact: false },
-    { name: 'Thí sinh', to: '/admin/list', exact: false },
     { name: 'Người dùng', to: '/admin/user', exact: false },
     { name: 'Đề Thi', to: '/admin/exam', exact: false },
     { name: 'Kì Thi', to: '/admin/test', exact: false },
+    { name: 'Thông báo', to: '/admin/notify', exact: false },
 
 ]
 function Li({ label, to, activeOnlyWhenExact }) {

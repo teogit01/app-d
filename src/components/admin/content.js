@@ -7,6 +7,9 @@ import Test from 'features/test'
 import Subject from 'features/subject'
 import Class from 'features/_class'
 import User from 'features/user'
+import Khoi from 'features/khoi'
+
+import Notify from 'features/notify'
 
 // import PropTypes from 'prop-types';
 
@@ -25,6 +28,9 @@ function Content(props) {
             <Route path={`${match.url}/test`} component={Test} />
             <Route path={`${match.url}/class`} component={Class} />
             <Route path={`${match.url}/user`} component={User} />
+            <Route path={`${match.url}/khoi`} component={Khoi} />
+
+            <Route path={`${match.url}/notify`} component={Notify} />
             {/* <Route path={`${match.url}/teacher`} exact component={ListTeacher} />
             <Route path={`${match.url}/teacher/add`} component={AddTeacher} />
 

@@ -1,26 +1,26 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import TeachDetail from './../components/teach-detail'
+import StudentDetail from './../components/student-detail'
 import { useHistory } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
-// PageTeachDetail.propTypes = {
+// PageStudentDetail.propTypes = {
 
 // };
 
-function PageTeachDetail(props) {
+function PageStudentDetail(props) {
     const history = useHistory()
     const redicect = () => {
         history.goBack()
     }
     return (
-        <div className='page-teach-detail'>
+        <div className='page-student-detail'>
             <div className='press-add'>
                 <FontAwesomeIcon className='ic-add ic-init' icon="arrow-left" onClick={redicect} />
             </div>
-            <TeachDetail />
+            <StudentDetail />
         </div>
     );
 }
 
-export default PageTeachDetail;
+export default PageStudentDetail;

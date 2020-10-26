@@ -1,0 +1,60 @@
+@import 'assets/constant/const-css';
+
+.wrap-page-notify {
+    text-align: left;
+
+    // page-main
+    .page-main {
+        .list-notify {
+            width: 97%;
+
+            .notify {
+                display: flex;
+                align-items: center;
+                background-color: #fff;
+                border-radius: 5px;
+                height: 35px;
+
+                margin-bottom: 10px;
+                border: 1px solid #fff;
+
+                &:hover {
+                    background-color: $color-bg;
+                }
+            }
+
+            .head {
+                font-weight: bold;
+
+                &:hover {
+                    background-color: #fff;
+                }
+            }
+        }
+    }
+
+    // page-add
+    .page-add {
+        width: 95%;
+
+        .form {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+
+            .control {
+                margin-bottom: 10px;
+            }
+
+            .control-button {
+                display: flex;
+                justify-content: flex-end;
+
+                .button {
+                    width: 120px;
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+}
