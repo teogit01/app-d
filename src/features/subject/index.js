@@ -5,7 +5,11 @@ import Switch from 'react-bootstrap/esm/Switch';
 import { Route, useRouteMatch } from 'react-router-dom';
 import callApi from 'api/apiCaller'
 
+import { loadKhoi } from 'features/khoi/khoiSlice'
+import { loadSubject } from 'features/subject/subjectSlice'
+
 import MainPage from './pages/page.main'
+import { useDispatch, useSelector } from 'react-redux';
 // import PropTypes from 'prop-types';
 // SubjecIndex.propTypes = {
 
@@ -19,25 +23,40 @@ const listSubject = [
 function SubjecIndex(props) {
     const match = useRouteMatch()
     const [listSubject, setListSubject] = useState([])
+    const dispatch = useDispatch()
     useEffect(() => {
         const LoadSubject = async () => {
             let data = await callApi('mon')
-            //setListSubject(data.data)
-            //console.log('data', data)
-            console.log('data', data)
-            //dispatch(action.loadClass(data.data))
-            //console.log('called Api branch')
+            dispatch(loadSubject(data.data))
         }
         // if (branchs && branchs.length === 0) {
         LoadSubject()
         // }
-    })
-    console.log(listSubject)
+    }, [])
+    const subject_s = useSelector(state => state.subjects)
+    useEffect(() => {
+        const LoadKhoi = async () => {
+            let data = await callApi('khoi')
+            dispatch(loadKhoi(data.data))
+        }
+        LoadKhoi()
+    }, [])
+    const khoi_s = useSelector(state => state.khoi)
+
+    let optionsKhoi = []
+    if (khoi_s) {
+        khoi_s.map(item => {
+            optionsKhoi.push({ value: item._id, label: item.ten })
+        })
+    }
 
     return (
         <div className='wrap-subject'>
             <Switch>
-                <Route path={`${match.url}`} exact component={() => <MainPage listSubject />} />
+                <Route path={`${match.url}`} exact
+                    component={() => <MainPage
+                        optionsKhoi={optionsKhoi}
+                        listSubject={subject_s} />} />
             </Switch>
         </div>
     );

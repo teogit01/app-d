@@ -3,6 +3,7 @@
 .wrap-test {
     text-align: left;
     margin-left: -30px;
+    --width: 95%;
 
     .page-main {
         width: 100%;
@@ -36,8 +37,8 @@
 
     //page-add
     .page-add {
-        width: 75%;
-        margin: 0 auto;
+        width: 85%;
+        --margin: 0 auto;
         background-color: #fff;
         padding: 20px 10px;
         border-radius: 5px;

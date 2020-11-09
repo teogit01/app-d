@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Question from '../components/question'
 
@@ -18,8 +18,14 @@ function MainPage(props) {
     const { listQuestion } = props
     const match = useRouteMatch()
     const history = useHistory()
+    const [questions, setQuestions] = useState(listQuestion)
+
     const redirect = () => {
         history.push(`${match.url}/add`)
+    }
+    const handleRemove = (_id) => {
+        let newQuestions = questions.filter(item => item._id != _id)
+        setQuestions(newQuestions)
     }
     return (
         <div className='wrap-main'>
@@ -28,14 +34,14 @@ function MainPage(props) {
             </div>
             <div className='col-12 head row list'>
                 <div className='col-1'>#</div>
-                <div className='col-2'>Mã</div>
                 <div className='col-3'>Tên</div>
+                <div className='col-2'>Môn</div>
                 <div className='col-4'>Nội dung</div>
                 <div className='col-1'>Action</div>
             </div>
             {
-                listQuestion.map(item => {
-                    return <Question key={item._id} question={item} />
+                questions.map(item => {
+                    return <Question key={item._id} question={item} remove={handleRemove} />
                 })
             }
 

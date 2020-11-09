@@ -4,28 +4,33 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useHistory } from 'react-router-dom'
 import FormTN from '../components/form-tracnghiem'
 import FormTL from '../components/form-tuluan'
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-// AddPage.propTypes = {
-
-// };
+AddPage.propTypes = {
+    optionsSubject: PropTypes.array,
+    add: PropTypes.func
+};
 
 function AddPage(props) {
+    const { optionsSubject, add } = props
     const [isShow, setShow] = useState('TN')
-    // handleChangeType when select type question
+    // handleChangeType when select type question    
     const handleChangeType = e => {
         const value = e.target.value
         setShow(value)
     }
-    console.log(isShow)
+    //console.log(isShow)
     //redicect goBack
     const history = useHistory()
     const redicect = () => {
         history.goBack()
     }
 
+    const handleAdd = (question) => {
+        add(question)
+    }
     return (
-        <div className='wrap-main   '>
+        <div className='wrap-main'>
             <div className='press-add'>
                 <FontAwesomeIcon className='ic-add ic-init' icon="arrow-left" onClick={redicect} />
             </div>
@@ -39,10 +44,10 @@ function AddPage(props) {
             <hr />
             <div>
                 <div className={isShow === 'TN' ? 'isShow' : 'isNone'}>
-                    <FormTN />
+                    <FormTN loai={isShow} optionsSubject={optionsSubject} add={handleAdd} />
                 </div>
                 <div className={isShow === 'TL' ? 'isShow' : 'isNone'}>
-                    <FormTL />
+                    <FormTL loai={isShow} />
                 </div>
 
             </div>

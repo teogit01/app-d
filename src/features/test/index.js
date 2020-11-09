@@ -13,16 +13,12 @@ import PageAdd from './pages/page.add'
 
 // };
 
-const listTest = [
-    { id: '01', name: 'test1' },
-    { id: '02', name: 'test1' }
-]
 function TextIndex(props) {
     const match = useRouteMatch()
     return (
         <div className='wrap-test'>
             <Switch>
-                <Route path={`${match.url}`} exact component={() => <MainPage listTest={listTest} />} />
+                <Route path={`${match.url}`} exact component={() => <MainPage />} />
                 <Route path={`${match.url}/add`} component={() => <PageAdd />} />
             </Switch>
         </div>

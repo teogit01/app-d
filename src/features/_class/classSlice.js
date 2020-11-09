@@ -17,5 +17,5 @@ const _class = createSlice({
 })
 
 const { reducer, actions } = _class
-export const { loadBranch, addBranch, removeBranch } = actions
+export const { loadClass, addClass, removeClass } = actions
 export default reducer
