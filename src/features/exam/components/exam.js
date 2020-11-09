@@ -1,16 +1,16 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useHistory, useRouteMatch } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-// Exam.propTypes = {
-
-// };
+Exam.propTypes = {
+    exam: PropTypes.object
+};
 
 function Exam(props) {
+    const { exam } = props
     const history = useHistory()
     const match = useRouteMatch()
-    const { exam } = props
     // redirect detail    
     const detail = (_id) => {
         history.push(`${match.url}/detail/${_id}`)
@@ -18,15 +18,14 @@ function Exam(props) {
     return (
         <div className='exam'>
             <div className='col-12 row list'>
-                <div className='col-0'>#</div>
-                <div className='col'>{exam.code}</div>
-                <div className='col'>{exam.subject}</div>
-                <div className='col'>{exam.time}</div>
-                <div className='col'>{exam.course}</div>
-                <div className='col'>{exam.course}</div>
-                <div className='col'>0</div>
-                <div className='col'>
-                    <FontAwesomeIcon className='ic-init' icon="eye" onClick={() => detail(exam.id)} />
+                <div className='col-1'>#</div>
+                <div className='col-2'>{exam.ma}</div>
+                <div className='col-2'>mon</div>
+                <div className='col-2'>{exam.thoigian} phút</div>
+                <div className='col-2'>{exam.namhoc}</div>
+                <div className='col-2'>Trạng thái</div>
+                <div className='col-1'>
+                    <FontAwesomeIcon className='ic-init' icon="eye" onClick={() => detail(exam._id)} />
                     &nbsp;&nbsp;
                     <FontAwesomeIcon className='ic-init' icon="trash" />
                 </div>

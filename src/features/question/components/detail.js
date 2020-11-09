@@ -1,17 +1,26 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useHistory } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-// Detail.propTypes = {
-
-// };
+Detail.propTypes = {
+    detail: PropTypes.object
+};
 
 function Detail(props) {
+    const { detail } = props
     const history = useHistory()
     const redicect = () => {
         history.goBack()
     }
+    // detail.phuongan.map(item => {
+    //     console.log(item)
+    // })
+    //console.log(Array.isArray(detail.phuongan))
+    //let noidung = detail.phuongan
+    // if (detail) {
+    //     console.log(detail.phuongan[0].noidung)
+    // }
     return (
         <div className='detail-question'>
             <div className='press-add'>
@@ -31,15 +40,15 @@ function Detail(props) {
 
                     <div className='control'>
                         <label className='bold'>Tiêu đề câu hỏi: &nbsp;</label>
-                        <textarea className='form-control' rows='2'>
-                            Tiêu đề câu hởi
+                        <textarea className='form-control' rows='2' value={detail.tieude}>
+
                         </textarea>
                     </div>
 
                     <div className='control'>
                         <label className='bold'>Nội dung câu hỏi: &nbsp;</label>
-                        <textarea className='form-control' rows='3'>
-                            Nội dung...........
+                        <textarea className='form-control' rows='3' value={detail.noidung}>
+
                         </textarea>
                     </div>
 
@@ -48,16 +57,28 @@ function Detail(props) {
                         <label className='bold'>Phương án: &nbsp;</label>
                         <br />
                         <lable>(A)</lable>
-                        <input type='text' className='form-control da' placeholder=' Phương á A' />
+                        <input type='text'
+                            className={detail && detail.phuongan[0].dapan ? 'form-control da' : 'form-control'}
+                            value={detail && detail.phuongan[0].noidung}
+                            placeholder=' Phương á A' />
                         <br />
                         <lable>(B)</lable>
-                        <input type='text' className='form-control' placeholder=' Phương á B' />
+                        <input type='text'
+                            className={detail && detail.phuongan[1].dapan ? 'form-control da' : 'form-control'}
+                            value={detail && detail.phuongan[1].noidung}
+                            placeholder=' Phương á B' />
                         <br />
                         <lable>(C)</lable>
-                        <input type='text' className='form-control' placeholder=' Phương á A' />
+                        <input type='text'
+                            className={detail && detail.phuongan[2].dapan ? 'form-control da' : 'form-control'}
+                            value={detail && detail.phuongan[2].noidung}
+                            placeholder=' Phương á A' />
                         <br />
                         <lable>(D)</lable>
-                        <input type='text' className='form-control' placeholder=' Phương á D' />
+                        <input type='text'
+                            className={detail && detail.phuongan[3].dapan ? 'form-control da' : 'form-control'}
+                            value={detail && detail.phuongan[3].noidung}
+                            placeholder=' Phương á D' />
                     </div>
                 </div>
                 <div className='button'>

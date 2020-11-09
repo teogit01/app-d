@@ -1,61 +1,94 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import PhuongAn from './../components/phuong-an'
+import callApi from 'api/apiCaller'
+//import Select from 'react-select'
 
 Detail.propTypes = {
-    listQuestion: PropTypes.array
+    listQuestion: PropTypes.array,
+    detail: PropTypes.object,
+    questionAdd: PropTypes.array,
+    questionRemove: PropTypes.array,
+
+    resetQuestionRemove: PropTypes.func,
+    resetQuestionAdd: PropTypes.func,
+
+    remove: PropTypes.func
+    //optionsQuestion: PropTypes.array
 };
 
 function Detail(props) {
-    const { listQuestion } = props
-    const [questionAdd, setListQuestionAdd] = useState([])
-    //handle change question    
-    const handleChangeQuestion = (e) => {
-        const value = e.target.value
-        const valueAdd = listQuestion.find(item => item.value === value)
-        setListQuestionAdd([...questionAdd, valueAdd])
+    const { listQuestion,
+        detail,
+        questionAdd,
+        remove,
+        resetQuestionAdd,
+        questionRemove,
+        resetQuestionRemove } = props
+    const onSubmit = async (e) => {
+        e.preventDefault()
+        if (questionAdd.length > 0) {
+            questionAdd && questionAdd.map((item) => {
+                data.cauhois.push(item._id)
+            })
+            // call api add
+            callApi('dethi/add-question', 'POST', data).then(() => {
+                if (resetQuestionAdd) {
+                    resetQuestionAdd()
+                }
+            })
+        }
+        if (questionRemove.length > 0) {
+            questionRemove && questionRemove.map((item) => {
+                data.cauhois.push(item)
+            })
+            // call api remove
+            callApi('dethi/remove-question', 'POST', data).then(() => {
+                if (resetQuestionAdd) {
+                    resetQuestionRemove()
+                }
+            })
+        }
+    }
+    //const [questionRemove, setQuestionRemove] = useState([])
+    const handleRemove = (_id) => {
+        remove(_id)
+    }
+    let data = {
+        _iddethi: detail._id,
+        cauhois: [],
     }
     return (
         <div className='detail'>
-            <form>
+            <form onSubmit={onSubmit}>
                 <div className='head'>
-                    <label>Mã Đề:</label>
+                    <label>Mã Đề: {detail.ma}</label>
                     <br />
-                    <label>Môn:</label>
+                    <label>Thời gian: {detail.thoigian}</label>
                     <br />
-                    <label>Thời gian:</label>
+                    <label>Năm học: {detail.namhoc}</label>
                     <br />
-                    <label>Kì thi:</label>
+                    <label>Tổng câu hỏi: {listQuestion.length} </label>
                     <br />
-                    <label>Tổng câu hỏi: {questionAdd.length} </label>
-                    <br />
-
                 </div>
                 <hr />
-
                 <div>
                     {
-                        questionAdd.map(item => {
-                            return <PhuongAn key={item.value} question={item} />
+                        listQuestion && listQuestion.map((item, idx) => {
+                            return <PhuongAn
+                                index={idx}
+                                key={item._id}
+                                light={idx % 2 === 0 ? true : false}
+                                question={item} remove={handleRemove} />
                         })
                     }
                 </div>
 
-                <div>
-                    <label>Thêm câu hỏi:</label>
-                    <select className='form-control' onChange={handleChangeQuestion}>
-                        <option>Thêm câu hỏi</option>
-                        {
-                            listQuestion.map(option => {
-                                return <option key={option.value} value={option.value}>{option.label}</option>
-                            })
-                        }
-                    </select>
-                </div>
                 <br />
                 <div className='control'>
                     <div className='btn btn-warning button'>Huỷ</div>
-                    <button className='btn btn-info button'>Lưu</button>
+                    <div className='btn btn-primary button button-edit'>Chỉnh sửa</div>
+                    <button className='btn btn-info button' type='submit'>Lưu</button>
                 </div>
             </form>
         </div>

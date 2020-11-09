@@ -1,40 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useRouteMatch, useHistory } from 'react-router-dom';
+import callApi from 'api/apiCaller';
 
 import Exam from './../components/exam'
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
-MainPage.propTypes = {
-    listExam: PropTypes.array
-};
+// MainPage.propTypes = {
+//     exams: PropTypes.array
+// };
 
-function MainPage(props) {
-    const { listExam } = props
+function MainPage() {
+    //const { exams } = props
     const match = useRouteMatch()
     const history = useHistory()
     const redirect = () => {
         history.push(`${match.url}/add`)
     }
+    const [exams, setExams] = useState([])
+    useEffect(() => {
+        const LoadExam = async () => {
+            let data = await callApi('dethi')
+            //dispatch(loadExam(data.data))
+            setExams(data.data)
+        }
+        LoadExam()
+    }, [])
     return (
         <div className='page-main'>
             <div className='press-add'>
                 <FontAwesomeIcon className='ic-add ic-init' icon="plus" onClick={redirect} />
             </div>
             <div className='col-12 head row list'>
-                <div className='col-0'>#</div>
-                <div className='col'>Mã</div>
-                <div className='col'>Môn</div>
-                <div className='col'>Thời gian</div>
-                <div className='col'>Kì thi</div>
-                <div className='col'>Năm học</div>
-                <div className='col'>Trạng thái</div>
-                <div className='col'>Action</div>
+                <div className='col-1'>#</div>
+                <div className='col-2'>Mã</div>
+                <div className='col-2'>Môn</div>
+                <div className='col-2'>Thời gian</div>
+                <div className='col-2'>Năm học</div>
+                <div className='col-2'>Trạng thái</div>
+                <div className='col-1'></div>
             </div>
 
             {
-                listExam.map(item => {
+                exams.map(item => {
                     return <Exam exam={item} key={item.id} />
                 })
             }

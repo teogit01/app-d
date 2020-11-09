@@ -2,9 +2,11 @@
 
 .wrap-exam {
     text-align: left;
+    ;
 
     //main page
     .page-main {
+
         .page-add {
             display: none;
         }
@@ -45,7 +47,7 @@
         // //form add        
         .form-add {
 
-            width: 95%;
+            width: 85%;
             background-color: #fff;
             padding: 10px;
             border-radius: 5px;
@@ -74,8 +76,23 @@
         border-radius: 5px;
     }
 
-    .head {
-        font-weight: bold;
+    .title {
+        display: flex;
+
+        .head {
+            font-weight: bold;
+            width: 99%;
+        }
+
+        .remove {
+            text-align: right;
+            --width: 50px;
+            font-size: 15px;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
     }
 
     .control {
@@ -86,6 +103,8 @@
             width: 120px;
             margin-left: 10px;
         }
+
+        .button-edit {}
     }
 
     .phuong-an {
@@ -94,6 +113,24 @@
 
         &--item {
             width: 40%;
+        }
+    }
+
+    .content-question {
+        width: 90%;
+        margin-left: 10%;
+    }
+
+    .wrap {
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .light {
+        background-color: $color-bg;
+
+        .light-sub {
+            background-color: $color-bg;
         }
     }
 }
