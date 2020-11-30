@@ -25,6 +25,10 @@ function Detail(props) {
         resetQuestionAdd,
         questionRemove,
         resetQuestionRemove } = props
+    let data = {
+        _iddethi: detail._id,
+        cauhois: [],
+    }
     const onSubmit = async (e) => {
         e.preventDefault()
         if (questionAdd.length > 0) {
@@ -32,7 +36,7 @@ function Detail(props) {
                 data.cauhois.push(item._id)
             })
             // call api add
-            callApi('dethi/add-question', 'POST', data).then(() => {
+            callApi('de-thi/add-question', 'POST', data).then(() => {
                 if (resetQuestionAdd) {
                     resetQuestionAdd()
                 }
@@ -43,7 +47,7 @@ function Detail(props) {
                 data.cauhois.push(item)
             })
             // call api remove
-            callApi('dethi/remove-question', 'POST', data).then(() => {
+            callApi('de-thi/remove-question', 'POST', data).then(() => {
                 if (resetQuestionAdd) {
                     resetQuestionRemove()
                 }
@@ -53,10 +57,6 @@ function Detail(props) {
     //const [questionRemove, setQuestionRemove] = useState([])
     const handleRemove = (_id) => {
         remove(_id)
-    }
-    let data = {
-        _iddethi: detail._id,
-        cauhois: [],
     }
     return (
         <div className='detail'>

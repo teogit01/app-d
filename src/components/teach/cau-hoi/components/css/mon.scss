@@ -1,0 +1,23 @@
+.mon {
+    width: 95%;
+    --height: 70px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 10px;
+
+    .mon-content {
+        --font-weight: bold;
+        margin-bottom: 10px;
+        opacity: .2;
+
+    }
+
+    .actived {
+        opacity: 1;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}

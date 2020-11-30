@@ -1,0 +1,126 @@
+.feature-nhom {
+    .page-nhom {
+        .content-page {
+            .left {
+                --width: 33%;
+                --height: 400px;
+
+                .nhom,
+                .nhom-actived {
+                    width: 95%;
+                    min-height: 200px;
+                    border-radius: 10px;
+                    border: 1px solid #ddd;
+                    margin-bottom: 10px;
+                    padding: 10px 20px;
+
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    position: relative;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+
+                    &:hover .remove {
+                        display: block;
+                    }
+
+                    .remove {
+                        width: 10px;
+                        position: absolute;
+                        right: 0px;
+                        top: 0;
+
+                        display: none;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+
+                    .control {
+                        display: flex;
+
+                        label {
+                            font-weight: bold;
+                            width: 100px;
+                        }
+                    }
+                }
+
+                .nhom-actived {
+                    opacity: 1;
+                }
+
+                .nhom {
+                    opacity: .5;
+                }
+            }
+
+            .right {
+                .students {
+                    --display: flex;
+                    width: 100%;
+                    padding: 10px;
+
+                    table {
+                        width: 100%;
+
+                        tr {
+                            width: 100%;
+                            border-bottom: 1px solid #ddd;
+                            height: 35px;
+
+                            td,
+                            th {
+                                --width: 200px;
+                            }
+                        }
+                    }
+
+                    .control-cap-tai-khoan {
+                        margin-top: 10px;
+                        display: flex;
+                        justify-content: flex-end;
+
+                    }
+
+                    .student {
+                        width: 100%;
+                        display: flex;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.form-add-nhom {
+    .control {
+        height: 35px;
+        display: flex;
+        --align-items: flex-end;
+        margin-bottom: 10px;
+
+        label {
+            width: 100px;
+        }
+
+        input {
+            width: 350px;
+            --height: 35px;
+            border: none;
+            border-bottom: 1px solid #ddd;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        select {
+            width: 350px;
+        }
+    }
+}

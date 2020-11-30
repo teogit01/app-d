@@ -21,7 +21,7 @@ function MainPage() {
     const [exams, setExams] = useState([])
     useEffect(() => {
         const LoadExam = async () => {
-            let data = await callApi('dethi')
+            let data = await callApi('de-thi')
             //dispatch(loadExam(data.data))
             setExams(data.data)
         }

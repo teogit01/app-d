@@ -1,0 +1,66 @@
+.de-thi-ct {
+    width: 100%;
+    padding: 10px;
+    --border: 1px solid #ddd;
+    --margin-bottom: 10px;
+    --border-radius: 10px;
+    --background-color: #ddd;
+
+    .remove {
+        position: absolute;
+        font-weight: bold;
+        right: 150px;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        display: none;
+    }
+
+    .even {
+        --background-color: #eee;
+        --border-radius: 10px;
+    }
+
+    .cau-hoi {
+
+        &:hover .remove {
+            display: block;
+        }
+
+        .noi-dung-cau-hoi {
+            --border: 1px solid #ddd;
+        }
+
+        .phuong-an {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+
+            .phuong-an-item {
+                width: 45%;
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+
+                .phuong-an-chon {
+                    width: 30px;
+                    --width: 5%;
+                }
+
+                .phuong-an-chon-noidung {
+                    --width: 95%;
+                }
+            }
+        }
+    }
+
+    .dap-an {
+        font-weight: bold;
+    }
+
+    --border-radius: 10px;
+    --border-bottom: 1px solid #ddd;
+}
