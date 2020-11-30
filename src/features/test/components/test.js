@@ -13,8 +13,8 @@ function Test(props) {
         <div className=''>
             <div className='col-12 row list'>
                 <div className='col-0'>#</div>
-                <div className='col'>{test.dethi.mon.ten}</div>
-                <div className='col'>{test.dethi.thoigian}phút</div>
+                {/*<div className='col'>{test.dethi.mon.ten}</div>
+                <div className='col'>{test.dethi.thoigian}phút</div>*/}
                 <div className='col'>{test.ngaythi}</div>
                 <div className='col'>{test.batdau}</div>
                 <div className='col'>{test.ketthuc}</div>

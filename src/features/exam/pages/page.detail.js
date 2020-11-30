@@ -35,11 +35,11 @@ function PageDetail(props) {
 
     useEffect(() => {
         const LoadDetail = async () => {
-            let data = await callApi(`dethi/detail/${_id}`)
+            let data = await callApi(`de-thi/detail/${_id}`)
             setDetail(data.data)
         }
         const LoadQuestion = async () => {
-            let data = await callApi(`cauhoi/dethi/${_iddethi}`)
+            let data = await callApi(`cau-hoi/de-thi/${_iddethi}`)
             setQuestions(data.data[0].cauhois)
         }
         LoadDetail()
@@ -48,7 +48,7 @@ function PageDetail(props) {
 
     useEffect(() => {
         const LoadQuestionOfExam = async () => {
-            let data = await callApi(`cauhoi/mon/${detail.mon}`)
+            let data = await callApi(`cau-hoi/mon/${detail.mon}`)
             setQuestionOfExam(data.data)
         }
         LoadQuestionOfExam()

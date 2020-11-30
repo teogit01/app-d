@@ -1,0 +1,100 @@
+.feature-nhom .page-nhom .content-page .left {
+  --width: 33%;
+  --height: 400px;
+}
+.feature-nhom .page-nhom .content-page .left .nhom,
+.feature-nhom .page-nhom .content-page .left .nhom-actived {
+  width: 95%;
+  min-height: 200px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+.feature-nhom .page-nhom .content-page .left .nhom:hover,
+.feature-nhom .page-nhom .content-page .left .nhom-actived:hover {
+  cursor: pointer;
+}
+.feature-nhom .page-nhom .content-page .left .nhom:hover .remove,
+.feature-nhom .page-nhom .content-page .left .nhom-actived:hover .remove {
+  display: block;
+}
+.feature-nhom .page-nhom .content-page .left .nhom .remove,
+.feature-nhom .page-nhom .content-page .left .nhom-actived .remove {
+  width: 10px;
+  position: absolute;
+  right: 0px;
+  top: 0;
+  display: none;
+}
+.feature-nhom .page-nhom .content-page .left .nhom .remove:hover,
+.feature-nhom .page-nhom .content-page .left .nhom-actived .remove:hover {
+  cursor: pointer;
+}
+.feature-nhom .page-nhom .content-page .left .nhom .control,
+.feature-nhom .page-nhom .content-page .left .nhom-actived .control {
+  display: flex;
+}
+.feature-nhom .page-nhom .content-page .left .nhom .control label,
+.feature-nhom .page-nhom .content-page .left .nhom-actived .control label {
+  font-weight: bold;
+  width: 100px;
+}
+.feature-nhom .page-nhom .content-page .left .nhom-actived {
+  opacity: 1;
+}
+.feature-nhom .page-nhom .content-page .left .nhom {
+  opacity: 0.5;
+}
+.feature-nhom .page-nhom .content-page .right .students {
+  --display: flex;
+  width: 100%;
+  padding: 10px;
+}
+.feature-nhom .page-nhom .content-page .right .students table {
+  width: 100%;
+}
+.feature-nhom .page-nhom .content-page .right .students table tr {
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  height: 35px;
+}
+.feature-nhom .page-nhom .content-page .right .students table tr td,
+.feature-nhom .page-nhom .content-page .right .students table tr th {
+  --width: 200px;
+}
+.feature-nhom .page-nhom .content-page .right .students .control-cap-tai-khoan {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+.feature-nhom .page-nhom .content-page .right .students .student {
+  width: 100%;
+  display: flex;
+}
+
+.form-add-nhom .control {
+  height: 35px;
+  display: flex;
+  --align-items: flex-end;
+  margin-bottom: 10px;
+}
+.form-add-nhom .control label {
+  width: 100px;
+}
+.form-add-nhom .control input {
+  width: 350px;
+  --height: 35px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+.form-add-nhom .control input:focus {
+  outline: none;
+}
+.form-add-nhom .control select {
+  width: 350px;
+}

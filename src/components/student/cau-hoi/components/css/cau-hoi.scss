@@ -1,0 +1,36 @@
+.cau-hoi {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+
+    .remove {
+        position: absolute;
+        width: 20px;
+        right: 0px;
+        display: none;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .title {
+        margin-bottom: 10px;
+    }
+
+    .phuong-an {
+        .phuong-an-item {
+            display: flex;
+        }
+
+        .dap-an {
+            font-weight: bold;
+        }
+    }
+
+    &:hover .remove {
+        display: block;
+    }
+
+    padding-bottom: 10px;
+}

@@ -26,7 +26,7 @@ function QuestionIndex(props) {
     const [questions, setQuestions] = useState([])
     useEffect(() => {
         const LoadQuestion = async () => {
-            let data = await callApi('cauhoi')
+            let data = await callApi('cau-hoi')
             setQuestions(data.data)
             //dispatch(loadQuestion(data.data))
         }

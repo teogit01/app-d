@@ -10,8 +10,7 @@ import { useRouteMatch } from 'react-router-dom';
 
 // };
 
-function AdminIndex(props) {
-    const match = useRouteMatch()
+function AdminIndex() {
     return (
         <div className="admin">
             <div className='admin__menu'>
@@ -26,7 +25,7 @@ function AdminIndex(props) {
                 <div className='content'>
                     <Header />
 
-                    <Content match={match} />
+                    <Content />
 
                 </div>
             </div>

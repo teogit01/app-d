@@ -15,7 +15,7 @@ function PageDetail(props) {
     const [detail, setDetail] = useState('')
     useEffect(() => {
         const LoadDetail = async () => {
-            let data = await callApi(`cauhoi/detail/${_id}`)
+            let data = await callApi(`cau-hoi/detail/${_id}`)
             setDetail(data.data)
             //console.log('data.data', data.data)
         }
