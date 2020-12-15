@@ -3,9 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import DatePicker from "react-datepicker";
 import KiThi from './../components/ki-thi.js'
 import KiThiCT from './../components/ki-thi-ct.js'
+import Nhom from './../components/nhom'
+import DanhSach from './../components/danhsach'
 import callApi from 'api/apiCaller.js';
 import Select from 'react-select'
-import { compareAsc, format } from 'date-fns'
+import { format } from 'date-fns'
 
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 // import PropTypes from 'prop-types';
@@ -18,27 +20,40 @@ function PageMain(props) {
     // LOAD_KITHi
     const [kithis, setKithis] = useState([])
     const [kithiActived, setKithiActived] = useState('')
+    const [nhomActived, setNhomActived] = useState('')
+    const [demos, setDemos] = useState([])
+    const [nhoms, setNhoms] = useState('')
+    const user = JSON.parse(localStorage.getItem('userLogin'))
     const LOAD_KITHI = async () => {
         let data = await callApi('ki-thi')
-        setKithis(data.data)
-        if (data.data.length > 0)
+        if (data) {
+            setKithis(data.data)
             setKithiActived(data.data[0])
-
+            setDemos(data.data[0].dethimos)
+            if (data.data[0]) {
+                setNhoms(data.data[0].nhoms)
+                setNhomActived(data.data[0].nhoms[0])
+            }
+        }
     }
     const [mons, setMons] = useState([])
     const LOAD_MON = async () => {
         let data = await callApi('mon')
-        setMons(data.data)
+        if (data) {
+            setMons(data.data)
+        }
     }
     useEffect(() => {
         LOAD_KITHI()
         LOAD_MON()
     }, [])
     // END LOAD KI THI
-
     // changeKithiActived
     const changeKithiActived = (kithi) => {
         setKithiActived(kithi)
+        setNhoms(kithi.nhoms)
+        setNhomActived(kithi.nhoms[0])
+        setDemos(kithi.dethimos)
     }
     // end changeKithiActived
 
@@ -94,7 +109,7 @@ function PageMain(props) {
             mon: valueMonThi,
             thoigian: valueThoiGian,
             dethi: valueDeThi,
-
+            user: user[0]
         }
         //console.log(data)
         callApi('ki-thi', 'POST', data).then((res) => {
@@ -107,7 +122,7 @@ function PageMain(props) {
             setValueDeThi('')
             //setValueMonThi('')
             setKithiActived(res.data)
-            setKithis([...kithis, res.data])
+            setKithis([res.data, ...kithis])
         })
         toggleTaoKiThi()
     }
@@ -156,6 +171,7 @@ function PageMain(props) {
         }
         callApi('ki-thi/them-de-thi', 'POST', data).then(res => {
             setKithiActived(res.data)
+            toggleThemDe()
         })
     }
     // end them de
@@ -164,10 +180,13 @@ function PageMain(props) {
     const [dethisActived, setDethisActived] = useState([])
     const LOAD_DE_MON_ACTIVED = async () => {
         let data = await callApi(`de-thi/mon/${kithiActived.mon}`)
-        setDethisActived(data.data)
+        if (data) {
+            setDethisActived(data.data)
+        }
     }
     useEffect(() => {
-        LOAD_DE_MON_ACTIVED()
+        if (kithiActived)
+            LOAD_DE_MON_ACTIVED()
     }, [kithiActived])
     if (dethisActived.length > 0) {
         dethisActived.map(dethi => {
@@ -179,25 +198,156 @@ function PageMain(props) {
         setDethiSelected(dethi)
     }
     // END LOAD DE CUA MON Active
+
+    // remove Dethi
+    const removeDethi = (dethi, dethiRenderDong, dethiRenderMo) => {
+        const newDethiDong = dethiRenderDong.filter(de => de._id === dethi._id)
+        const newDethiMo = dethiRenderMo.filter(de => de._id === dethi._id)
+
+        let dethirenderdong = []
+        newDethiDong.map(item => {
+            dethirenderdong.push(item._id)
+        })
+        let dethirendermo = []
+        newDethiMo.map(item => {
+            dethirendermo.push(item._id)
+        })
+        const data = {
+            _iddethi: dethi._id,
+            _idkithi: kithiActived._id,
+            dethirenderdong: dethirenderdong,
+            dethirendermo: dethirendermo
+        }
+        callApi(`ki-thi/remove-de-thi`, 'POST', data)
+    }
+    const handleChange = (dethiRenderMo) => {
+        setDemos(dethiRenderMo)
+    }
+    // end remove Dethi
+
+    // them  nhom    
+    const [isOpenNhom, setIsOpenNhom] = useState(false);
+    const toggleThemNhom = () => setIsOpenNhom(!isOpenNhom);
+    const [nhomAll, setNhomAll] = useState([])
+    useEffect(() => {
+        const LOAD_NHOM = async () => {
+            let data = await callApi('nhom')
+            setNhomAll(data.data)
+        }
+        LOAD_NHOM()
+    }, [])
+    let optionsNhom = []
+    if (nhomAll.length > 0) {
+        nhomAll.map(nhom => {
+            optionsNhom.push({ label: nhom.ten, value: nhom._id })
+        })
+    }
+    const [nhomSelected, setNhomSelected] = useState('')
+    const selectedNhom = (nhom) => {
+        setNhomSelected(nhom.value)
+    }
+    const onSaveThemNhom = () => {
+        const data = {
+            _idkithi: kithiActived._id,
+            _idnhom: nhomSelected
+        }
+        callApi('ki-thi/them-nhom', 'POST', data).then(res => {
+            //setKithiActived(res.data)         
+            setNhoms(res.data.nhoms)
+            setNhomActived(res.data.nhoms[res.data.nhoms.length - 1])
+        })
+
+        toggleThemNhom()
+    }
+    ///////////////////////subNhomChange
+    const subNhomChange = (nhom) => {
+        setNhomActived(nhom)
+    }
+    /////////////////////// removeNhom
+    const removeNhom = (nhom) => {
+        const newNhoms = nhoms.filter(n => n._id != nhom._id)
+        const data = {
+            _idkithi: kithiActived._id,
+            _idnhom: nhom._id
+        }
+        callApi('ki-thi/remove-nhom', 'POST', data)
+        setNhoms(newNhoms)
+        setNhomActived(newNhoms[0])
+    }
+    ////////////////////// changeStatus
+    const changeStatus = (kithi) => {
+        const idx = kithis.indexOf(kithi)
+        let newKithis = kithis
+        newKithis[idx].trangthai = !newKithis[idx].trangthai
+        setKithis(newKithis)
+        callApi(`ki-thi/trang-thai/${kithi._id}`)
+    }
+    //console.log('data', kithiActived)        
+    //changeKithiActive
+    const changeKithiActive = (kithi) => {
+
+        const newKithis = kithis.filter(kt => kt._id !== kithi._id)
+
+        setKithis([...newKithis, kithi])
+        setKithiActived(kithi)
+    }
     return (
         <div className='page-ki-thi'>
             <div className='content-page'>
                 <div className='left'>
                     <FontAwesomeIcon className='ic-add ic-init' icon="plus" onClick={toggleTaoKiThi} />
-                    <FontAwesomeIcon className='ic-add ic-init2' icon="plus" onClick={toggleThemDe} />
+                    {
+                        (kithiActived && kithiActived.tinhtrang === 2) && <FontAwesomeIcon className='ic-add ic-init2' icon="plus" onClick={toggleThemDe} />
+                    }
                     {
                         kithis.length > 0 &&
                         kithis.map(kithi => {
                             return (
                                 <div className='kithis' key={kithi._id} onClick={() => changeKithiActived(kithi)} >
-                                    <KiThi kithi={kithi} kithiActived={kithiActived} remove={handleRemove} />
+                                    <KiThi
+                                        changeStatus={changeStatus}
+                                        kithi={kithi}
+                                        kithiActived={kithiActived}
+                                        remove={handleRemove}
+                                        changeKithiActive={changeKithiActive}
+                                    />
                                 </div>
                             )
                         })
                     }
                 </div>
                 <div className='right'>
-                    <KiThiCT kithi={kithiActived} dethis={kithiActived.dethis} />
+                    <KiThiCT
+                        kithi={kithiActived}
+                        dethis={kithiActived ? kithiActived.dethis : ''}
+                        dethidongs={kithiActived ? kithiActived.dethidongs : ''}
+                        dethimos={kithiActived ? kithiActived.dethimos : ''}
+                        remove={removeDethi}
+                        change={handleChange}
+                    />
+                    {/* <KiThiCT kithi={kithiActived} /> */}
+                    <hr />
+                    {/* <Nhoms /> */}
+                    <div style={{ display: 'flex' }}>
+                        {
+                            nhoms.length > 0 && <Nhom
+                                remove={removeNhom}
+                                nhoms={nhoms}
+                                subNhomChange={subNhomChange}
+                                nhomActived={nhomActived} />
+                        }
+                        {
+                            (kithiActived && kithiActived.tinhtrang === 2) && <FontAwesomeIcon className='ic-add' style={{ opacity: '0.5' }} icon="plus" onClick={toggleThemNhom} />
+                        }
+                    </div>
+
+                    <hr />
+
+                    <div>
+                        {
+                            nhomActived && <DanhSach nhom={nhomActived} demos={demos} />
+                        }
+                    </div>
                 </div>
             </div>
             {/* Tao Ki thi */}
@@ -333,6 +483,34 @@ function PageMain(props) {
                         <ModalFooter>
                             <div className='btn btn-primary' color="primary" onClick={onSaveThemDe}>Thêm </div>
                             <div className='btn btn-secondary' color="secondary" onClick={toggleThemDe}>Cancel</div>
+                        </ModalFooter>
+                    </form>
+                </Modal>
+            </div>
+
+
+            {/* Thêm đề */}
+            <div>
+                <Modal isOpen={isOpenNhom} toggle={toggleThemNhom}>
+                    <form>
+                        <ModalHeader toggle={toggleThemNhom}>Thêm nhóm</ModalHeader>
+                        <ModalBody>
+                            <div className='form'>
+                                <div className='control'>
+                                    <label>Chọn nhóm:</label>
+                                    <div>
+                                        <Select
+                                            className='chon-de-thi'
+                                            options={optionsNhom}
+                                            onChange={selectedNhom}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </ModalBody>
+                        <ModalFooter>
+                            <div className='btn btn-primary' color="primary" onClick={onSaveThemNhom}>Thêm </div>
+                            <div className='btn btn-secondary' color="secondary" onClick={toggleThemNhom}>Cancel</div>
                         </ModalFooter>
                     </form>
                 </Modal>

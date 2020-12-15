@@ -1,0 +1,56 @@
+.kithis {
+  width: 95%;
+}
+
+.ki-thi {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  --height: 150px;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  opacity: 0.5;
+  position: relative;
+}
+.ki-thi:hover {
+  cursor: pointer;
+}
+.ki-thi .ki-thi-item {
+  display: flex;
+}
+.ki-thi .ki-thi-item label {
+  width: 100px;
+  font-weight: bold;
+}
+.ki-thi .remove {
+  position: absolute;
+  right: 20px;
+  display: none;
+}
+.ki-thi:hover .remove {
+  display: block;
+}
+
+.actived {
+  opacity: 1;
+}
+
+.form .control {
+  display: flex;
+  margin-bottom: 10px;
+  align-items: flex-end;
+}
+.form .control label {
+  width: 150px;
+}
+.form .control input {
+  width: 300px;
+}
+.form .control .select-monthi,
+.form .control .select-dethi {
+  width: 300px;
+}
+
+.chon-de-thi {
+  width: 370px;
+}

@@ -11,6 +11,12 @@
         margin-bottom: 10px;
         opacity: .2;
 
+        display: flex;
+        justify-content: space-between;
+
+        .remove {
+            display: none;
+        }
     }
 
     .actived {
@@ -19,5 +25,9 @@
 
     &:hover {
         cursor: pointer;
+    }
+
+    &:hover .remove {
+        display: block;
     }
 }

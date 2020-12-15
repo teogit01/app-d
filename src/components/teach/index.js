@@ -9,7 +9,6 @@ import DeThi from 'components/teach/de-thi'
 import CauHoi from 'components/teach/cau-hoi'
 import KiThi from 'components/teach/ki-thi'
 import Nhom from 'components/teach/nhom'
-import SinhVien from 'components/teach/sinh-vien'
 
 function Index() {
     const match = useRouteMatch()
@@ -26,7 +25,6 @@ function Index() {
                 <Route path={`${match.url}/cau-hoi`} exact component={() => <CauHoi />} />
                 <Route path={`${match.url}/ki-thi`} exact component={() => <KiThi />} />
                 <Route path={`${match.url}/nhom`} exact component={() => <Nhom />} />
-                <Route path={`${match.url}/sinh-vien`} exact component={() => <SinhVien />} />
             </Switch>
         </div >
 

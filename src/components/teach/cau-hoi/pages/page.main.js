@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import callApi from 'api/apiCaller';
 import Mon from './../components/mon'
 import CauHoi from './../components/cauhoi'
+import * as XLSX from 'xlsx'
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 // import PropTypes from 'prop-types';
@@ -12,6 +14,37 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 // };
 
 function PageMain(props) {
+
+    const [cauhoiImport, setCauhoiImport] = useState([])
+    const [saveButton, setSaveButton] = useState(false)
+    const readExcel = (file) => {
+        const promise = new Promise((resolve, reject) => {
+            const fileReader = new FileReader()
+            fileReader.readAsArrayBuffer(file)
+            fileReader.onload = (e) => {
+                const bufferArray = e.target.result
+
+                const wb = XLSX.read(bufferArray, { type: 'buffer' })
+
+                const wsname = wb.SheetNames[0]
+
+                const ws = wb.Sheets[wsname]
+
+                //const data = XLSX.utils.sheet_to_json(ws)
+                const data = XLSX.utils.sheet_to_json(ws)
+                //console.log('data', data)
+                resolve(data)
+            }
+            fileReader.onerror = (error => {
+                reject(error)
+            })
+        })
+        promise.then((data) => {
+            //console.log(data)
+            setCauhoiImport(data)
+            setSaveButton(true)
+        })
+    }
     // LOAD MON
     const [mons, setMons] = useState([])
     const [monActived, setMonActived] = useState('')
@@ -20,23 +53,28 @@ function PageMain(props) {
     useEffect(() => {
         const LOAD_MON = async () => {
             let data = await callApi('mon')
-            setMons(data.data)
-            setMonActived(data.data[0])
+            if (data) {
+                setMons(data.data)
+                setMonActived(data.data[0])
+            }
         }
         LOAD_MON()
     }, [])
     // ENd LOAD MON
     // activeMon
     const activeMon = (mon) => {
+        setSaveButton(false)
+        setCauhoiImport([])
         setMonActived(mon)
+        setValueImport('')
     }
     // end activeMon
 
-    // handleThemCauHoi        
-    const handleThemCauHoi = () => {
+    // handleThemMon        
+    const handleThemMon = () => {
         toggleAddMon()
     }
-    // end handleThemCauHoi
+    // end handleThemMon
 
     // chang input 
     const [valueTen, setValueTen] = useState('')
@@ -55,8 +93,8 @@ function PageMain(props) {
             ten: valueTen
         }
         callApi('mon', 'POST', data).then((res) => {
-            setMons([...mons, res.data.mon])
-            setMonActived(res.data.mon)
+            setMons([...mons, res.data])
+            setMonActived(res.data)
             setValueMa('')
             setValueTen('')
             toggleAddMon()
@@ -79,7 +117,8 @@ function PageMain(props) {
         }
     }
     useEffect(() => {
-        LOAD_CAU_HOI_MON()
+        if (monActived)
+            LOAD_CAU_HOI_MON()
     }, [monActived])
     // END LOAD CAU HOI CUA MON
 
@@ -125,14 +164,16 @@ function PageMain(props) {
             ],
             _idmon: monActived._id
         }
+        //console.log(data)
         callApi('cau-hoi/them', 'POST', data).then(res => {
             setCauhois([...cauhois, res.data.result_cauhoi])
-            const idx = mons.indexOf(monActived)
-            if (idx != -1) {
-                let newMons = [...mons.slice(0, idx), res.data.result_mon, ...mons.slice(idx + 1, mons.length)]
-                setMons(newMons)
-                setMonActived(res.data.result_mon)
-            }
+            //const idx = mons.indexOf(monActived)
+            // if (idx != -1) {
+            //     let newMons = [...mons.slice(0, idx), res.data.result_mon, ...mons.slice(idx + 1, mons.length)]
+            //     setMons(newMons)
+            //     setMonActived(res.data.result_mon)
+            // }
+            setMonActived(res.data.result_mon)
             setValueNoiDung('')
             setValuePhuongAnA('')
             setValuePhuongAnB('')
@@ -140,7 +181,7 @@ function PageMain(props) {
             setValuePhuongAnD('')
             setDapAn('A')
             toggleAddCauHoi()
-            LOAD_CAU_HOI_MON()
+            //LOAD_CAU_HOI_MON()
         })
     }
     // end them cau hoi
@@ -163,18 +204,63 @@ function PageMain(props) {
         })
     }
     // end remove cau hoi
+
+    // remove Mon
+    const removeMon = (mon) => {
+        callApi(`mon/remove/${mon._id}`).then(() => {
+            let newMons = mons.filter(item => item != mon)
+            setMons(newMons)
+            setMonActived(mons[newMons.length - 1])
+        })
+    }
+    // end removeMon
+
+    // saveCauhoiImport
+    const saveCauhoiImport = () => {
+        const data = {
+            _idmon: monActived._id,
+            cauhois: cauhoiImport
+        }
+        callApi('cau-hoi/import', 'POST', data)
+
+        setSaveButton(false)
+    }
+    // end saveCauhoiImport
+
+    const [valueImport, setValueImport] = useState('')
+    console.log('im', cauhoiImport)
     return (
         <div className='feature-cau-hoi'>
             <div className='content-page'>
                 <div className='left'>
-                    <FontAwesomeIcon className='ic-add ic-init' icon="plus" onClick={handleThemCauHoi} />
+
+                    {saveButton && <FontAwesomeIcon className='ic-add ic-init3' icon="save" onClick={saveCauhoiImport} />}
+                    <FontAwesomeIcon className='ic-add ic-init' icon="plus" onClick={handleThemMon} />
                     <FontAwesomeIcon className='ic-add ic-init2' icon="plus" onClick={toggleAddCauHoi} />
+                    <label htmlFor='importt' >
+                        <FontAwesomeIcon className='ic-add ic-init2' style={{ top: '200px' }} icon="file-import" />
+                    </label>
+                    <input
+                        type='file'
+                        id='importt'
+                        style={{ display: 'none' }}
+                        value={valueImport}
+                        onChange={(e) => {
+                            const file = e.target.files[0]
+                            readExcel(file)
+                        }}
+                    />
                     {
                         mons.length > 0 &&
                         mons.map(mon => {
                             return (
                                 <div className='' onClick={() => { activeMon(mon) }}>
-                                    <Mon key={mon._id} mon={mon} monActived={monActived} />
+                                    <Mon
+                                        key={mon._id} mon={mon}
+                                        monActived={monActived}
+                                        cauhoiImport={cauhoiImport}
+                                        remove={removeMon}
+                                    />
                                 </div>
                             )
                         })
@@ -187,6 +273,13 @@ function PageMain(props) {
                             return <CauHoi key={cauhoi._id} cauhoi={cauhoi} remove={handleRemove} />
                         })
                     }
+
+                    {
+                        cauhoiImport.length > 0 &&
+                        cauhoiImport.map(cauhoi => {
+                            return <CauHoi cauhoiImport={cauhoi} />
+                        })
+                    }
                 </div>
             </div>
             {/* Modal them mon */}
@@ -196,7 +289,9 @@ function PageMain(props) {
                         <ModalHeader>Thêm môn</ModalHeader>
                         <ModalBody className='t'>
                             <div className='form'>
-                                <input type='text' placeholder='Nhập mã' value={valueMa} onChange={changeValue} name='ma' />
+                                <input type='text' placeholder='Nhập mã'
+                                    value={valueMa} onChange={changeValue}
+                                    name='ma' />
                                 <input type='text' placeholder='Nhập tên'
                                     value={valueTen}
                                     onChange={changeValue} name='ten' />

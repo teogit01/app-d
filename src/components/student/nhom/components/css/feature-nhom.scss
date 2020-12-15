@@ -65,6 +65,27 @@
                     width: 100%;
                     padding: 10px;
 
+                    .thong-bao {
+                        min-height: 100px;
+                        margin-bottom: 10px;
+                        position: relative;
+
+                        .thong-bao-noi-dung {
+                            display: flex;
+                            align-items: center;
+                            height: 100px;
+                            --background-color: red;
+                        }
+
+                        .thong-bao-ngay-gio {
+                            text-align: right;
+                            position: absolute;
+                            right: 0;
+                            top: 60%;
+                            font-style: italic;
+                        }
+                    }
+
                     table {
                         width: 100%;
 
