@@ -15,7 +15,7 @@ function KiThi(props) {
     }
     return (
         <div className={kithi._id === kithiActived._id ? 'ki-thi actived' : 'ki-thi'}>
-            <div className='remove' onClick={() => getId(kithi._id)}>X</div>
+            {/* <div className='remove' onClick={() => getId(kithi._id)}>X</div> */}
             <div className='ki-thi-item'>
                 <label>Mã: </label>
                 <div>{kithi.ma}</div>

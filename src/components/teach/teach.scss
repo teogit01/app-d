@@ -58,7 +58,8 @@
 
     // .ic-add 
     .ic-init,
-    .ic-init2 {
+    .ic-init2,
+    .ic-init3 {
         font-size: 25px;
         position: fixed;
         --left: 20px;
@@ -72,5 +73,16 @@
 
     .ic-init2 {
         top: 270px;
+    }
+
+    .ic-init3 {
+        top: 300px;
+    }
+
+    .drop-down {
+        position: fixed;
+        right: 10px;
+        width: 50px;
+
     }
 }

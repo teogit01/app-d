@@ -1,0 +1,19 @@
+.ct-cau-hoi {
+
+    .cau-hoi-item {
+        .phuong-an {
+            .phuong-an-item {
+                display: flex;
+                align-items: center;
+
+                .phuong-an-ten {
+                    width: 30px;
+                }
+
+                .check-phuongan {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}

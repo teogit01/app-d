@@ -1,0 +1,110 @@
+.feature-thong-tin {
+    .page-thong-tin {
+        .main {
+            display: flex;
+            padding: 10px;
+
+            .left {
+                padding: 10px 20px;
+                width: 35%;
+                height: 100%;
+                min-height: 500px;
+                border-right: 1px solid #ddd;
+
+                .control {
+                    width: 55%;
+                    margin: 0 auto;
+                    text-align: center;
+                }
+
+                .content-left {
+                    width: 100%;
+                    --height: 500px;
+                    display: flex;
+                    --align-items: center;
+
+                    .avatar {
+                        border: 1px solid #ddd;
+                        border-radius: 5px;
+                        width: 240px;
+                        height: 300px;
+
+                        margin: 0 auto;
+                        margin-bottom: 20px;
+                    }
+
+                    .infor {
+                        margin: 0 auto;
+                        margin-left: 100px;
+
+                        .control {
+                            display: flex;
+
+                            label {
+                                width: 80px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .right {
+                padding: 10px 20px;
+                width: 65%;
+                height: 100%;
+                min-height: 500px;
+                --border-right: 1px solid #ddd;
+
+                .right-infor {
+                    .control {
+                        display: flex;
+
+                        label {
+                            width: 100px;
+                            font-weight: bold;
+                        }
+
+                        border-bottom: 1px solid #eee;
+
+                        input {
+                            width: 600px;
+                            border: none;
+                            background-color: #fff;
+                            z-index: -1;
+
+                            &:focus {
+                                outline: none;
+                            }
+                        }
+                    }
+
+                    line-height: 30px;
+                    margin-top: 20px;
+
+                    .button-control {
+                        text-align: right;
+
+                        .button {
+                            width: 150px;
+                            margin-right: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.dap-an {
+    font-weight: bold;
+}
+
+.sai {
+    font-weight: bold;
+    color: red;
+}
+
+.chua-lam {
+    background-color: lightgoldenrodyellow;
+    border-radius: 5px;
+}

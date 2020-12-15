@@ -12,6 +12,7 @@ import { format, getHours, getMinutes } from 'date-fns'
 // };
 
 function PageMain(props) {
+    const giaovien = JSON.parse(localStorage.getItem('userLogin'))
     const [students, setStudents] = useState([])
     const [studentsImport, setStudentsImport] = useState([])
     const [isOpenFormAddNhom, setIsOpenFormAddNhom] = useState(false);
@@ -41,11 +42,10 @@ function PageMain(props) {
             })
         })
         promise.then((data) => {
-            //console.log(data)
             setStudentsImport(data)
+            setIsShowDanhSach(true)
         })
     }
-
     const [isShowDanhSach, setIsShowDanhSach] = useState(false)
     // onSave tao nhom
     const [maValue, setMaValue] = useState('')
@@ -68,8 +68,9 @@ function PageMain(props) {
     const [nhomActived, setNhomActived] = useState('')
     useEffect(() => {
         const LOAD_NHOM = async () => {
-            let data = await callApi('nhom')
+            let data = await callApi(`nhom/giao-vien/${giaovien[0]._id}`)
             if (data) {
+                console.log('data', data)
                 setNhoms(data.data)
                 setNhomActived(data.data[0])
                // setThongbaos(data.data[0].thongbaos)
@@ -78,18 +79,25 @@ function PageMain(props) {
         LOAD_NHOM()
     }, [])
     useEffect(() => {
+        const LOAD_THONGBAO = async () => {
+            let data_thongbao = await callApi(`thong-bao/nhom/${nhomActived._id}`)
+            setThongbaos(data_thongbao.data)
+        }
         const LOAD_SV = async () => {
             
             let data = await callApi(`tai-khoan/nhom/${nhomActived._id}`)
             let data_thongbaos = await callApi(`thong-bao/nhom/${nhomActived._id}`)
-            if (data.data.sinhviens) {
-                //data.data.sinhviens.sort()
+            if (data) {
+                data.data.sinhviens.sort()
                 setStudents(data.data.sinhviens.sort((a, b) => {
                     if (a.maso < b.maso)
                         return -1
                 }))
-            }
-            
+                setThongbaos(data_thongbaos.data)
+                setIsShowDanhSach(false)
+                //setStudents(data.data.sinhviens)
+                //console.log('data', data.data)
+            }            
             setThongbaos(data_thongbaos.data)
             setIsShowDanhSach(false)
 
@@ -98,7 +106,6 @@ function PageMain(props) {
         if (nhomActived)
         LOAD_SV()
     }, [nhomActived])
-    const giaovien = JSON.parse(localStorage.getItem('userLogin'))
     const onSaveTaoNhom = () => {
         const data = {
             ma: maValue,
@@ -108,22 +115,29 @@ function PageMain(props) {
         }
         //console.log('data', data)
         callApi('nhom/add', 'POST', data).then(res => {
-            //let newNhoms = [...nhoms, res.data]
+            //let newNhoms = [...nhoms, res.data]            
             setNhoms(res.data)
             setNhomActived(res.data[res.data.length - 1])
         })
-
+        setMaValue('')
+        setTenValue('')
+        setNamHoc('')
         toggleAddNhom()
     }
     const removeNhom = (nhom) => {
 
-        callApi(`nhom/remove/${nhom._id}`).then(res => {
-            setNhoms(res.data)
-        })
+        callApi(`nhom/remove/${nhom._id}`)
+        let newNhoms = nhoms.filter(x => x._id != nhom._id)
+        setNhoms(newNhoms)
+        if (newNhoms.length > 0) {
+            setNhomActived(newNhoms[0])
+        } else {
+            setNhomActived('')
+        }
     }
 
     // create Account
-    const createAccount = () => {
+    const createAccount = (students) => {
         const data = {
             students: students,
             nhomActived: nhomActived
@@ -156,16 +170,28 @@ function PageMain(props) {
         const data = {
             noidung: thongbaoValue,
             ngay: format(day, 'dd/MM/yyyy'),
-            gio: `${getHours(day)}:${getMinutes(day)}`,
+            gio: (0 + '' + getHours(day)).slice(-2) + ':' + (0 + '' + getMinutes(day)).slice(-2),
             _idnhom: nhomActived._id
         }
-        //console.log(data)
         toggleThongBao()
         callApi('thong-bao/them', 'POST', data).then((res) => {
             setThongbaos(res.data)
         })
     }
-    // end thong bao
+
+    // remove thong bao
+    const handleRemoveThongBao = (thongbao) => {
+        const newThongbaos = thongbaos.filter(tb => tb._id != thongbao._id)
+        setThongbaos(newThongbaos)
+        const data = {
+            _idnhom: nhomActived._id,
+            _idthongbao: thongbao._id
+        }
+        callApi(`thong-bao/remove`, 'POST', data)
+    }
+    // end thong bao    
+
+
     return (
         <div className='page-nhom'>
             <div className='content-page'>
@@ -188,7 +214,7 @@ function PageMain(props) {
                         nhoms.length > 0 &&
                         nhoms.map(nhom => {
                             return (
-                                <div className={nhom._id === nhomActived._id ? 'nhom-actived' : 'nhom'}
+                                <div className={nhomActived && nhom._id === nhomActived._id ? 'nhom-actived' : 'nhom'}
                                     key={nhom._id}
                                     onClick={() => activeNhom(nhom)}
                                 >
@@ -220,26 +246,40 @@ function PageMain(props) {
                 </div>
                 <div className='right'>
                     <div style={{ display: isShowDanhSach ? 'block' : 'none' }}>
-                        <DanhSach students={students} studentsImport={studentsImport} createAccount={createAccount} />
+                        {
+                            studentsImport &&
+                            <DanhSach students={students} studentsImport={studentsImport} createAccount={createAccount} />
+                        }
                     </div>
                     <div className='thong-bao'>
-                        <div className='title' onClick={toggleThongBao}>
-                            <div>Đăng thông báo mới</div>
-                        </div>
-                        <div className='noi-dung'>
-                            {
-                                thongbaos.length > 0 &&
-                                thongbaos.sort((a, b) => {
-                                    if (a._id > b._id)
-                                        return -1
-                                }).map(thongbao => {
-                                    return (
-                                        <div key={thongbao._id} className='thong-bao-item'>
-                                            {thongbao.noidung}
-                                        </div>
-                                    )
-                                })
-                            }
+                        <div style={{ display: !isShowDanhSach ? 'block' : 'none' }}>
+                            <div className='title' onClick={toggleThongBao}>
+                                <div>Đăng thông báo mới</div>
+                            </div>
+                            <div className='noi-dung'>
+                                {
+                                    thongbaos.length > 0 &&
+                                    thongbaos.sort((a, b) => {
+                                        if (a._id > b._id)
+                                            return -1
+                                    }).map(thongbao => {
+                                        return (
+                                            <div key={thongbao._id} className='thong-bao-item'>
+                                                <div className='remove' onClick={() => handleRemoveThongBao(thongbao)}>
+                                                    x
+                                                </div>
+                                                <div>
+                                                    {thongbao.noidung}
+                                                </div>
+                                                <div className='thoi-gian'>
+                                                    {thongbao.gio} &nbsp;&nbsp;
+                                                    {thongbao.ngay}
+                                                </div>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>

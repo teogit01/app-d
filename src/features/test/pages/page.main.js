@@ -20,7 +20,7 @@ function MainPage(props) {
 
     useEffect(() => {
         const LoadData = async () => {
-            let data = await callApi('kithi')
+            let data = await callApi('ki-thi')
             setTests(data.data)
         }
         LoadData()

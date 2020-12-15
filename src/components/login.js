@@ -20,7 +20,7 @@ function Login(props) {
             setPassword(e.target.value)
         }
     }
-
+    const user = JSON.parse(localStorage.getItem('userLogin'))
     const onSubmit = () => {
         const data = {
             username,
@@ -41,7 +41,10 @@ function Login(props) {
     return (
         < div className='login' >
             {
-                checkLogin === true ? <Redirect to='/teacher' /> : ''
+                checkLogin === true ?
+                    user[0].vaitro === 1 ? < Redirect to='/teacher' /> :
+                        user[0].vaitro === 2 ? <Redirect to='/student' /> : ''
+                    : ''
             }
             <form style={style}>
                 <div>

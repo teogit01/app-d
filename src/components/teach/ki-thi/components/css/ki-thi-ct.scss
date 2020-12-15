@@ -26,10 +26,10 @@
                 border-radius: 10px;
 
                 padding: 10px;
-                --position: relative;
+                position: relative;
                 --float: left;
 
-                .remove {
+                .remove_dethi {
                     position: absolute;
                     width: 15px;
                     text-align: center;
@@ -42,8 +42,14 @@
                     }
                 }
 
-                &:hover .remove {
+                &:hover .remove_dethi {
                     display: block;
+                }
+
+                .status {
+                    position: absolute;
+                    bottom: 0px;
+                    left: 0;
                 }
 
                 margin-right: 5px;

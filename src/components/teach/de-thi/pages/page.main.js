@@ -69,6 +69,7 @@ function PageDeThi(props) {
             setGhichu(e.target.value)
         }
     }
+    // submit them de
     const onSubmit = async (e) => {
         e.preventDefault()
         const data = {
@@ -79,10 +80,19 @@ function PageDeThi(props) {
             namhoc: namhoc,
             ghichu: ghichu,
         }
-        callApi('de-thi', 'POST', data).then((res) => {
-            let newDethis = [...dethis]
-            newDethis.push(res.data.data)
-            setDethis(newDethis)
+        callApi('de-thi/them', 'POST', data).then((res) => {
+            //let newDethis = [...dethis]
+            //newDethis.push(res.data.data)
+            if (data) {
+                setDethis([...dethis, res.data])
+                setDethiSelected(res.data)
+            }
+            setMa('')
+            setTieude('')
+            setMon('')
+            setThoigian('')
+            setNamhoc('')
+            setGhichu('')
             toggle()
         })
     }
@@ -107,7 +117,7 @@ function PageDeThi(props) {
     }
     // ---- end handel ----- them de thi
     const remove = (_iddethi) => {
-        callApi(`de-thi/${_iddethi}`, 'DELETE', null)
+        callApi(`de-thi/remove/${_iddethi}`)
         let newDethis = dethis.filter(dethi => `${dethi._id}` !== _iddethi)
         setDethis(newDethis)
     }
@@ -181,15 +191,16 @@ function PageDeThi(props) {
             _iddethi: dethiSelected._id,
             _idcauhoi: _idcauhoi
         }
-        callApi('de-thi/remove-question', 'POST', data).then((res) => {
-            const idx = dethis.indexOf(dethiSelected)
-            if (idx != -1) {
-                let newDethis = [...dethis.slice(0, idx), res.data.result_dethi, ...dethis.slice(idx + 1, dethis.length)]
-                setDethis(newDethis)
-                setDethiSelected(res.data.result_dethi)
-            }
+        callApi('de-thi/remove-cauhoi', 'POST', data).then((res) => {
+            //const idx = dethis.indexOf(dethiSelected)
+            // if (idx != -1) {
+            //     let newDethis = [...dethis.slice(0, idx), res.data.result_dethi, ...dethis.slice(idx + 1, dethis.length)]
+            //     setDethis(newDethis)
+            //     setDethiSelected(res.data.result_dethi)
+            // }
+            const newCauhois = cauhois.filter(x => x._id != _idcauhoi)
+            setCauhois(newCauhois)
         })
-        setCauhois(newCauhois)
     }
     return (
         <div className='page-de-thi'>
@@ -199,13 +210,13 @@ function PageDeThi(props) {
                     <FontAwesomeIcon className='ic-add ic-init2' icon="plus" onClick={toggleCauhoi} />
                     {
                         dethis.map(dethi => {
-
                             return (
                                 <div key={dethi._id} onClick={() => handleSelectDeThi(dethi)} >
                                     <DeThi
                                         getIdDethi={remove}
                                         dethi={dethi}
-                                        actived={dethi._id === dethiSelected._id ? true : false} />
+                                        actived={dethiSelected && dethi._id === dethiSelected._id ? true : false}
+                                    />
                                 </div>
                             )
                         })

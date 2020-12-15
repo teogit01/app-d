@@ -14,7 +14,6 @@ const datas = [
     { name: 'Câu hỏi', to: '/teacher/cau-hoi', exact: false },
     { name: 'Kì thi', to: '/teacher/ki-thi', exact: false },
     { name: 'Nhóm', to: '/teacher/nhom', exact: false },
-    { name: 'Sinh viên', to: '/teacher/sinh-vien', exact: false },
 ]
 function Li({ label, to, activeOnlyWhenExact }) {
     let match = useRouteMatch({

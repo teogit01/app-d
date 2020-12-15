@@ -106,7 +106,7 @@
                         border-radius: 10px;
                         padding: 0 20px;
                         background-color: #fff;
-                        box-shadow: 5px 5px 10px #ddd;
+                        --box-shadow: 5px 5px 10px #ddd;
                     }
 
                     &:hover {
@@ -119,11 +119,30 @@
 
                         .thong-bao-item {
                             border-bottom: 1px solid #ddd;
-                            border-radius: 10px;
+                            --border-radius: 10px;
                             margin-top: 10px;
-                            box-shadow: 5px 3px 10px #ddd;
+                            --box-shadow: 5px 3px 10px #ddd;
                             min-height: 100px;
                             padding: 10px;
+                            position: relative;
+
+                            .remove {
+                                position: absolute;
+                                right: 10px;
+                                top: -10px;
+                                display: none;
+                            }
+
+                            &:hover .remove {
+                                display: block;
+                            }
+
+                            .thoi-gian {
+                                display: flex;
+                                justify-content: flex-end;
+                                font-size: 12px;
+                                font-style: italic;
+                            }
                         }
                     }
                 }
