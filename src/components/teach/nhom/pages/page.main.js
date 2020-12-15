@@ -72,13 +72,14 @@ function PageMain(props) {
             if (data) {
                 setNhoms(data.data)
                 setNhomActived(data.data[0])
-                setThongbaos(data.data[0].thongbaos)
+               // setThongbaos(data.data[0].thongbaos)
             }
         }
         LOAD_NHOM()
     }, [])
     useEffect(() => {
         const LOAD_SV = async () => {
+            
             let data = await callApi(`tai-khoan/nhom/${nhomActived._id}`)
             let data_thongbaos = await callApi(`thong-bao/nhom/${nhomActived._id}`)
             if (data.data.sinhviens) {
@@ -88,11 +89,13 @@ function PageMain(props) {
                         return -1
                 }))
             }
+            
             setThongbaos(data_thongbaos.data)
             setIsShowDanhSach(false)
 
             //console.log(data.data.sinhviens)
         }
+        if (nhomActived)
         LOAD_SV()
     }, [nhomActived])
     const giaovien = JSON.parse(localStorage.getItem('userLogin'))

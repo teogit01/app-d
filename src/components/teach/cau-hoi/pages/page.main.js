@@ -79,6 +79,7 @@ function PageMain(props) {
         }
     }
     useEffect(() => {
+        if (monActived)
         LOAD_CAU_HOI_MON()
     }, [monActived])
     // END LOAD CAU HOI CUA MON
