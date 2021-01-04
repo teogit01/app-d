@@ -118,7 +118,11 @@ function PageMain(props) {
     }
     useEffect(() => {
         if (monActived)
+<<<<<<< HEAD
+        LOAD_CAU_HOI_MON()
+=======
             LOAD_CAU_HOI_MON()
+>>>>>>> cdc2625ef9b9900ca33fe9e733d768b6159996b0
     }, [monActived])
     // END LOAD CAU HOI CUA MON
 

@@ -75,7 +75,7 @@ function PageMain(props) {
                 setNhoms(data.data)
                 setNhomRender(data.data)
                 setNhomActived(data.data[0])
-                //setThongbaos(data.data[0].thongbaos)
+               // setThongbaos(data.data[0].thongbaos)
             }
         }
         LOAD_NHOM()
@@ -99,6 +99,7 @@ function PageMain(props) {
             setThongbaos(data_thongbao.data)
         }
         const LOAD_SV = async () => {
+            
             let data = await callApi(`tai-khoan/nhom/${nhomActived._id}`)
             let data_thongbaos = await callApi(`thong-bao/nhom/${nhomActived._id}`)
             if (data) {
@@ -111,12 +112,14 @@ function PageMain(props) {
                 setIsShowDanhSach(false)
                 //setStudents(data.data.sinhviens)
                 //console.log('data', data.data)
-            }
+            }            
+            setThongbaos(data_thongbaos.data)
+            setIsShowDanhSach(false)
+
+            //console.log(data.data.sinhviens)
         }
-        if (nhomActived) {
-            LOAD_SV()
-            LOAD_THONGBAO()
-        }
+        if (nhomActived)
+        LOAD_SV()
     }, [nhomActived])
     const onSaveTaoNhom = () => {
         const data = {
