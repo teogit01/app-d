@@ -1,11 +1,11 @@
 .ki-thi-chi-tiet {
-    padding: 10px 20px;
-
+    //padding: 10px 20px;
+    width: 100%;
+    height: 100%;
 
     .wrap-de {
         display: flex;
         width: 300px;
-
         --position: relative;
 
         .de-this {
@@ -24,6 +24,9 @@
                 height: 250px;
                 border: 1px solid #ddd;
                 border-radius: 10px;
+                // background-color: lightsteelblue;
+                //background-color: #ABD9C9;
+                opacity: .8;
 
                 padding: 10px;
                 --position: relative;

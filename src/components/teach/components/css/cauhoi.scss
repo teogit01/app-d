@@ -1,0 +1,50 @@
+.cauhoi {
+    width: 100%;
+    min-height: 100px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+
+    .cauhoi-item {
+        width: 100%;
+        border-radius: 5px;
+        padding: 10px;
+
+        .cauhoi-item-title {
+            width: 100%;
+            display: flex;
+            margin-bottom: 5px;
+
+            .stt {
+                width: 60px;
+            }
+        }
+
+
+        .cauhoi-item-phuongan {
+            width: 100%;
+            padding-left: 30px;
+
+            .phuongan-item {
+                display: flex;
+
+                .pa-ten {
+                    width: 50px;
+                }
+            }
+
+            .dap-an {
+                font-weight: bold;
+            }
+
+            //display: flex;
+        }
+    }
+
+    .cauhoi-item-chan {
+        background-color: rgb(232, 238, 237);
+        //box-shadow: 5px 3px 10px #111;
+        border-radius: 10px;
+        transform: scale(1.01);
+        //color: lightseagreen;
+    }
+}

@@ -1,0 +1,122 @@
+$pg: pink;
+
+.feature-nhom {
+    text-align: left;
+    width: 100%;
+
+    .page-main {
+        width: 100%;
+        min-height: 300px;
+        display: flex;
+        padding: 20px 0 0 0;
+
+        .giaoviens,
+        .nhoms,
+        .nhom-detail {
+            min-height: 600px;
+            max-height: 600px;
+            overflow: auto;
+            // border-right: 1px solid #ddd;
+            padding: 10px;
+
+
+            .giao-vien-item,
+            .nhom-item1 {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 50px;
+
+                border-bottom: 1px solid #ddd;
+                margin-bottom: 5px;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            .giao-vien-item-actived {
+                background-color: $pg;
+            }
+
+            .nhom-item1-actived {
+                background-color: $pg;
+            }
+        }
+
+        .giaoviens {
+            width: 20%;
+        }
+
+        .nhoms {
+            width: 20%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nhom-detail {
+            width: 60%;
+            padding: 0 20px;
+
+            min-height: 600px;
+            max-height: 600px;
+            height: 600px;
+
+            .ds-sinh-vien,
+            .ds-thong-bao,
+            .ds-ki-thi {
+                // min-height: 600px;
+                // max-height: 600px;                                
+
+                .ds-sinh-vien-wrap,
+                .ds-thong-bao-wrap,
+                .ds-ki-thi-wrap {
+                    // min-height: 600px;
+                    // max-height: 600px;
+                    height: 500px;
+                    overflow: scroll;
+
+                    .ds-sinh-vien-item {
+                        display: flex;
+                        margin-bottom: 3px;
+                        border-bottom: 1px solid #ddd;
+
+                        .stt {
+                            width: 50px;
+                        }
+
+                        .ten {
+                            width: 100px;
+                        }
+
+                        .email {
+                            width: 150px;
+                        }
+
+                        .sdt {
+                            width: 100px;
+                        }
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+
+                    .thong-bao-item,
+                    .ki-thi-item {
+                        width: 100%;
+                        border-bottom: 1px solid #ddd;
+
+                    }
+                }
+            }
+        }
+
+        .hover {
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}

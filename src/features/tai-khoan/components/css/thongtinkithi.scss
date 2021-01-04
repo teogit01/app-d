@@ -1,0 +1,19 @@
+.thongtin-kithi {
+
+    width: 100%;
+    min-height: 300px;
+    box-shadow: 5px 5px 5px #ddd;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+
+    .kithis {
+        //display: flex;
+
+        .kithi-item {
+            width: 100%;
+            height: 35px;
+            border-bottom: 1px solid #ddd;
+        }
+    }
+}

@@ -1,0 +1,21 @@
+.nhom {
+    width: 90%;
+    min-height: 50px;
+
+    //height: 35px;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+    //border-radius: 5px;
+
+    .nhom--item {
+        width: 100%;
+        min-height: 35px;
+        display: flex;
+        align-items: center;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}

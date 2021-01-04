@@ -1,0 +1,147 @@
+.page-thongke {
+    width: 100%;
+    min-height: 550px;
+    max-height: 550px;
+
+    .thongke-main {
+        width: 100%;
+        min-height: 550px;
+        max-height: 550px;
+        border-radius: 5px;
+        box-shadow: 5px 5px 5px #ddd;
+        overflow: scroll;
+        //display: flex;
+
+        .thongke-item {
+            width: 90%;
+            min-height: 100px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+
+
+            &:last-child {
+                border: none;
+            }
+
+            .thongke-item-title {
+                font-weight: bold;
+            }
+
+            .thongke-item-content {
+                padding: 0 50px;
+            }
+        }
+
+        .thongke-muc {
+            width: 20%;
+
+            .thongke-muc-title {
+                font-weight: bold;
+                border-bottom: 1px solid #eee;
+                height: 30px;
+                //border-right: 1px solid #eee;
+            }
+
+            .thongke-muc-content {
+                width: 100%;
+                min-height: 500px;
+                max-height: 500px;
+                overflow: auto;
+
+                .thongke-muc-content-item {
+                    width: 100%;
+                    height: 50px;
+                    margin-bottom: 5px;
+                    display: flex;
+                    align-items: center;
+                    border-bottom: 1px solid #eee;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+
+                .actived {
+                    color: lightseagreen;
+                    box-shadow: 5px 5px 5px #ddd;
+                }
+            }
+
+        }
+    }
+
+    .thongke-chitiet {
+        width: 80%;
+
+        .thongke-chitiet-title {
+            font-weight: bold;
+            border-bottom: 1px solid #eee;
+            height: 30px;
+        }
+
+        .thongke-chitiet-content {
+            width: 100%;
+            min-height: 500px;
+            max-height: 500px;
+            overflow: auto;
+            padding: 0 20px;
+
+            .thongke-chitiet-content-item {
+                width: 100%;
+                min-height: 35px;
+                margin-bottom: 5px;
+                //display: flex;
+                align-items: center;
+                border-bottom: 1px solid #eee;
+
+                &-title {
+                    width: 100%;
+                    display: flex;
+                }
+
+                .stt {
+                    width: 60px;
+                    font-weight: bold;
+                }
+
+                &:hover {
+                    cursor: pointer;
+                }
+
+                &-content {
+                    width: 100%;
+
+                    //min-height: 200px;
+                    .noidung {
+                        width: 100%;
+                        padding: 10px 30px;
+                        min-height: 100px;
+
+                        .phuongan-item {
+                            display: flex;
+
+                            .pa-ten {
+                                width: 30px;
+                            }
+                        }
+
+                        .da {
+                            font-weight: bold;
+                        }
+                    }
+
+                }
+            }
+
+            .chan {
+                //background-color: #eee;
+            }
+
+            .actived {
+                color: lightseagreen;
+                box-shadow: 5px 5px 5px #ddd;
+            }
+        }
+    }
+
+}

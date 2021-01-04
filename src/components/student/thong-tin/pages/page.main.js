@@ -198,15 +198,6 @@ function PageMain(props) {
                                     Lịch sử thi
                                 </NavLink>
                             </NavItem>
-
-                            <NavItem>
-                                <NavLink
-                                    className={classnames({ active: activeTab === '3' })}
-                                    onClick={() => { toggle('3'); }}
-                                >
-                                    Danh sách nhóm
-                                </NavLink>
-                            </NavItem>
                         </Nav>
 
                         <br />
@@ -296,7 +287,7 @@ function PageMain(props) {
                                             <br />
                                             <div className='button-control'>
                                                 {
-                                                    !checkEdit ? <div className='btn btn-info button' onClick={() => { setCheckEdit(!checkEdit) }}>
+                                                    !checkEdit ? <div className='btn btn-warning button' onClick={() => { setCheckEdit(!checkEdit) }}>
                                                         Cập nhật thông tin</div> :
                                                         <>
                                                             <div className='btn btn-info button' onClick={submit}>Lưu lại</div>

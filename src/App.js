@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import './App.scss';
-import 'admin/components/commons/icon'
-import 'components/userSlice'
+import 'components/icon.js'
 
 import {
 	BrowserRouter as Router,
@@ -28,12 +27,12 @@ function App() {
 
 			<Router>
 				{
-					!user ? <Redirect to='/login' /> : ''
+					!user ? <Redirect to='/dang-nhap' /> : ''
 				}
-				<Route path='/register' component={Register} />
-				<Route path='/login' component={Login} />
-				<Route path='/teacher' component={Teacher} />
-				<Route path='/student' component={Student} />
+				<Route path='/dang-ky' component={Register} />
+				<Route path='/dang-nhap' component={Login} />
+				<Route path='/giao-vien' component={Teacher} />
+				<Route path='/sinh-vien' component={Student} />
 				<Route path='/admin' component={Admin} />
 			</Router>
 

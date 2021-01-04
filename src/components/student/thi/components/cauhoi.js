@@ -53,10 +53,11 @@ function CauHoi(props) {
     }
     return (
         <div className='cauhois'>
-            <div className='cauhoi-item'>
-                {baithi && baithi.kithi.tieude}
-                {baithi && baithi.dethi.tieude}
+            <div className='cauhoi-title'>
+                <div>{baithi && baithi.kithi.tieude}</div>
+                <div>{baithi && baithi.dethi.tieude}</div>
             </div>
+
             <div className='cauhoi-map'>
                 {
                     cauhois && cauhois.map((cauhoi, idx) => {
@@ -73,11 +74,10 @@ function CauHoi(props) {
             </div>
             <div className='thoigian-nopbai'>
                 <div>
-                    <div>Thoi gian</div>
-                    <div>00:00:00</div>
-                    <div>{time}</div>
+                    <div>Thời gian còn lại</div>
+                    <div><b>{time}</b></div>
                 </div>
-                <div className='btn btn-info' onClick={handleNopbai}>Nộp bài</div>
+                <div className='btn btn-info btn-block' onClick={handleNopbai}>Nộp bài</div>
             </div>
         </div>
     );

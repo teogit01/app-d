@@ -5,9 +5,13 @@
     border-radius: 10px;
     padding: 10px;
 
+    .cauhoi-title {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
 
     .cauhoi-map {
-        width: 100%;
+        width: 90%;
         --height: 80%;
         display: flex;
         flex-wrap: wrap;
@@ -39,5 +43,7 @@
         position: absolute;
         width: 95%;
         bottom: 10px;
+        //padding-left: 100px;
+        text-align: center;
     }
 }

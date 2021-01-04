@@ -1,0 +1,30 @@
+.feature-cauhoi {
+    text-align: left;
+    width: 100%;
+
+    .page-main {
+        .bg-cauhoi-item {
+            background-color: #EBFBFF;
+        }
+
+        .phuongan-item {
+            display: flex;
+
+            .phuongan-item-ten {
+                width: 30px;
+            }
+        }
+
+        .da {
+            font-weight: bold;
+        }
+
+        .phan-trang {
+            width: 200px;
+            margin: 0 auto;
+            margin-top: 20px;
+            text-align: center;
+
+        }
+    }
+}

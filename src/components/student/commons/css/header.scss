@@ -1,22 +1,28 @@
 .wrap-header {
     position: sticky;
-    top: -5px;
+    //top: -5px;
 
     .teach-header {
         width: 100%;
-        height: 40px;
-        background-color: #fff;
+        //height: 40px;
+        //background-color: #fff;
         box-shadow: 3px 3px 5px #ddd;
 
         display: flex;
         justify-content: space-between;
+        background-color: rgb(74, 126, 128);
+        //opacity: .9;
+
+        align-items: center;
+        height: 45px;
 
         .menu-top {
             width: 60%;
             --margin: 0 auto;
+            margin-top: 12px;
 
             ul {
-                --height: 40px;
+                //height: 65px;
                 display: flex;
                 --align-items: center;
                 --justify-content: center;
@@ -24,23 +30,30 @@
                 li {
                     display: flex;
                     width: 150px;
-                    height: 40px;
+                    //height: 65px;
                     align-items: center;
                     justify-content: center;
+                    text-transform: uppercase;
 
-                    color: black;
+                    //color: black;
+                    color: #fff;
                     --margin-right: 5px;
                     font-weight: bold;
 
                     &:hover {
                         cursor: pointer;
-                        background-color: #ddd;
+                        //background-color: #ddd;
+                        color: yellow;
                     }
                 }
 
                 .actived {
-                    background-color: #ddd;
-                    color: blue;
+
+                    //color: blue;
+                    //background-color: red;                 
+                    .label {
+                        color: yellow;
+                    }
                 }
             }
         }
@@ -84,13 +97,21 @@
 
     }
 
-    .notify {
-        width: 100%;
-        height: 25px;
-        padding: 0 20px;
-        display: flex;
-        align-items: center;
-        background-color: #ddd;
+    // .notify {
+    //     width: 100%;
+    //     height: 25px;
+    //     padding: 0 20px;
+    //     display: flex;
+    //     align-items: center;
+    //     background-color: #ddd;
 
+    // }
+
+    .info {
+        color: #fff;
+
+        &:hover {
+            color: yellow;
+        }
     }
 }

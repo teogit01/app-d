@@ -1,0 +1,120 @@
+.page-kithi {
+    width: 100%;
+    min-height: 600px;
+
+    .title {
+        display: flex;
+        //justify-content: space-between;
+        width: 100%;
+
+        h5 {
+            width: 20%;
+        }
+
+        .chuc-nang {
+            margin-left: 100px;
+            width: 80%;
+
+            display: flex;
+            align-items: center;
+            //justify-content: space-between;
+
+            .search {
+                width: 50%;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+
+                input {
+                    border: none;
+                    border-bottom: 1px solid #eee;
+                    width: 100%;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+
+            .import {
+                width: 30%;
+                margin-left: 50px;
+                display: flex;
+
+                .button {
+                    width: 90px;
+                    border-radius: 5px;
+                    text-align: center;
+                    border: 1px solid #ddd;
+                    background-color: lightseagreen;
+                    transition: all .2s;
+
+                    &:hover {
+                        cursor: pointer;
+                        transform: translateY(2px);
+                        box-shadow: 2px 2px 5px #ddd;
+                        color: #fff;
+                        opacity: .8;
+                        background-color: lightseagreen;
+                        transition: all .2s;
+                    }
+                }
+            }
+        }
+    }
+
+    .kithi-content {
+        width: 100%;
+        min-height: 550px;
+        max-height: 500px;
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid #eee;
+        border-radius: 5px;
+
+        .kithi-list,
+        .kithi-detail {
+            min-height: 500px;
+
+            .kithi-list-title,
+            .kithi-detail-title {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+                width: 99%;
+                min-height: 45px;
+                border-bottom: 1px solid #eee;
+            }
+        }
+
+        .kithi-list {
+            width: 23%;
+            padding: 0 0 0 10px;
+
+            .kithi-list-content {
+                .kithi-list-content-item {}
+
+                .actived {
+                    color: lightseagreen;
+                    box-shadow: 3px 3px 5px #ddd;
+                }
+            }
+        }
+
+        .kithi-detail {
+            width: 75%;
+            border-left: 1px solid #eee;
+            padding: 0 0 0 20px;
+        }
+    }
+
+    .icon {
+        opacity: .5;
+        margin-left: 20px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

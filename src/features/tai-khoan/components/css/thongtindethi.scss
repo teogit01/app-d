@@ -1,0 +1,61 @@
+.thongtin-dethi {
+
+    width: 100%;
+    min-height: 300px;
+    box-shadow: 5px 5px 5px #ddd;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+
+    .dethis {
+        //display: flex;
+
+        .dethi-item {
+            width: 100%;
+            height: 35px;
+            border-bottom: 1px solid #ddd;
+        }
+    }
+}
+
+.ds-kithi,
+.dethi-chitiet {
+
+    .kithi-item,
+    .dethi-item {
+        display: flex;
+
+        .control {
+            width: 20%;
+            height: 45px;
+            display: flex;
+            align-items: center;
+        }
+
+        .stt {
+            width: 60px;
+        }
+
+        border-bottom: 1px solid #ddd;
+    }
+
+    .dethi-item {
+        border-bottom: none;
+    }
+
+    .phuongan {
+        width: 100%;
+
+        .phuongan-item {
+            display: flex;
+
+            .pa-name {
+                width: 30px;
+            }
+        }
+
+        .da {
+            font-weight: bold;
+        }
+    }
+}

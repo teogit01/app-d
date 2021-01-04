@@ -30,11 +30,15 @@ function KiThi(props) {
             </div>
             <div className='ki-thi-item'>
                 <label>Thời lượng: </label>
-                <div>60 phút</div>
+                <div>{kithi.thoigian}</div>
             </div>
             <div className='ki-thi-item'>
                 <label>Trạng thái: </label>
-                <div>0</div>
+                <div>
+                    {kithi.tinhtrang === 0 ? 'Đã thi' :
+                        kithi.tinhtrang === '1' ? 'Đang thi' : 'Chưa thi'
+                    }
+                </div>
             </div>
             <div className='ki-thi-item'>
                 <label>Học kì: </label>

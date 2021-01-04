@@ -23,8 +23,10 @@ function PageMain(props) {
             let data = await callApi(`nhom/sinh-vien/${sinhvien[0]._id}`)
             if (data) {
                 setNhoms(data.data)
-                setNhomActived(data.data[0])
-                setThongbaos([...data.data[0].thongbaos].reverse())
+                if (data.data[0]) {
+                    setNhomActived(data.data[0])
+                    setThongbaos([...data.data[0].thongbaos].reverse())
+                }
             }
         }
         LOAD_NHOM()
@@ -55,11 +57,11 @@ function PageMain(props) {
     return (
         <div className='page-nhom'>
             <div className='content-page'>
-                <FontAwesomeIcon className='ic-add ic-init' icon="plus" onClick={() => toggleAddNhom()} />
+                {/* <FontAwesomeIcon className='ic-add ic-init' icon="plus" onClick={() => toggleAddNhom()} />
                 <FontAwesomeIcon className='ic-add ic-init2' icon="plus" />
                 <label htmlFor='importt' >
                     <FontAwesomeIcon className='ic-add ic-init2' style={{ top: '200px' }} icon="file-import" />
-                </label>
+                </label> */}
 
                 <div className='left'>
                     {
@@ -70,7 +72,7 @@ function PageMain(props) {
                                     key={nhom._id}
                                     onClick={() => activeNhom(nhom)}
                                 >
-                                    <div className='remove'>X</div>
+                                    <div className='remove'></div>
                                     <div className='control'>
                                         <label>Mã nhóm</label>
                                         <div>{nhom.ma}</div>

@@ -1,0 +1,266 @@
+.feature-nhom {
+    .page-nhom {
+        .content-page {
+            .left {
+                --width: 33%;
+                --height: 400px;
+
+                .nhom,
+                .nhom-actived {
+                    width: 95%;
+                    min-height: 200px;
+                    border-radius: 10px;
+                    border: 1px solid #ddd;
+                    margin-bottom: 10px;
+                    padding: 10px 20px;
+
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    position: relative;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+
+                    &:hover .remove {
+                        display: block;
+                    }
+
+                    .remove {
+                        width: 10px;
+                        position: absolute;
+                        right: 0px;
+                        top: 0;
+
+                        display: none;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+
+                    .control {
+                        display: flex;
+
+                        label {
+                            font-weight: bold;
+                            width: 100px;
+                        }
+                    }
+                }
+
+                .nhom-actived {
+                    opacity: 1;
+                }
+
+                .nhom {
+                    opacity: .5;
+                }
+            }
+
+            .none {
+                visibility: hidden;
+                height: 0px;
+                transition: all .3s;
+            }
+
+            .show {
+                visibility: visible;
+                transition: all .3s;
+                height: 200px;
+            }
+
+            .right {
+                --z-index: -1;
+
+
+
+                .students {
+                    --display: flex;
+                    width: 100%;
+                    padding: 10px;
+                    --height: 1500px;
+                    overflow: scroll;
+
+                    table {
+                        width: 100%;
+
+                        tr {
+                            width: 100%;
+                            border-bottom: 1px solid #ddd;
+                            height: 35px;
+
+                            td,
+                            th {
+                                --width: 200px;
+                            }
+                        }
+                    }
+
+                    .control-cap-tai-khoan {
+                        margin-top: 10px;
+                        display: flex;
+                        justify-content: flex-end;
+                        position: relative;
+                    }
+
+                    .student {
+                        width: 100%;
+                        display: flex;
+                    }
+
+                }
+
+                .thong-bao {
+
+                    .title {
+                        width: 100%;
+                        height: 35px;
+                        display: flex;
+                        align-items: center;
+                        margin-top: 10px;
+
+                        border: 1px solid #ddd;
+                        border-radius: 10px;
+                        padding: 0 20px;
+                        background-color: #fff;
+                        --box-shadow: 5px 5px 10px #ddd;
+                    }
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+
+                    .noi-dung {
+                        margin-top: 10px;
+                        width: 100%;
+
+                        .thong-bao-item {
+                            border-bottom: 1px solid #ddd;
+                            --border-radius: 10px;
+                            margin-top: 10px;
+                            --box-shadow: 5px 3px 10px #ddd;
+                            min-height: 100px;
+                            padding: 10px;
+                            position: relative;
+
+                            .remove {
+                                position: absolute;
+                                right: 10px;
+                                top: -10px;
+                                display: none;
+                            }
+
+                            &:hover .remove {
+                                display: block;
+                            }
+
+                            .thoi-gian {
+                                display: flex;
+                                justify-content: flex-end;
+                                font-size: 12px;
+                                font-style: italic;
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            .search-input {
+                //width: 400px;
+                border: none;
+                border-bottom: 1px solid #ddd;
+                position: fixed;
+                z-index: 1;
+                right: 90px;
+                top: 230px;
+                background-color: transparent;
+                transition: all .5s;
+                visibility: hidden;
+                width: 0;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            .search-input-actived {
+                border: none;
+                border-bottom: 1px solid #ddd;
+                position: fixed;
+                z-index: 1;
+                right: 90px;
+                top: 230px;
+                background-color: transparent;
+                width: 300px;
+
+                transition: all .5s;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+    }
+}
+
+.form-add-nhom {
+    .control {
+        height: 35px;
+        display: flex;
+        --align-items: flex-end;
+        margin-bottom: 10px;
+
+        label {
+            width: 100px;
+        }
+
+        input {
+            width: 350px;
+            --height: 35px;
+            border: none;
+            border-bottom: 1px solid #ddd;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        select {
+            width: 350px;
+        }
+    }
+}
+
+.dang-thong-bao {
+    padding: 10px;
+    height: 400px;
+
+    .title {
+        display: flex;
+        justify-content: space-between;
+
+        h3 {
+            width: 99%;
+            text-align: center;
+        }
+
+        .exit {
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    textarea {
+        --background-color: red;
+        border: none;
+    }
+
+    .button {
+        position: relative;
+        top: 50px;
+    }
+}
