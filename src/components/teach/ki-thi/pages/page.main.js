@@ -28,9 +28,9 @@ function PageMain(props) {
         let data = await callApi('ki-thi')
         if (data) {
             setKithis(data.data)
-            setKithiActived(data.data[0])
-            setDemos(data.data[0].dethimos)
             if (data.data[0]) {
+                setKithiActived(data.data[0])
+            setDemos(data.data[0].dethimos)
                 setNhoms(data.data[0].nhoms)
                 setNhomActived(data.data[0].nhoms[0])
             }

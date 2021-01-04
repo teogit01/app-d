@@ -85,7 +85,9 @@ function PageMain(props) {
     useEffect(() => {
         const LOAD_LICHSUTHI = async () => {
             callApi(`tai-khoan/lich-su-thi/${user[0]._id}`).then(res => {
-                setBaithis(res.data.baithis)
+                if (res){
+                    setBaithis(res.data.baithis)
+                }
             })
 
         }

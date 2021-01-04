@@ -31,7 +31,7 @@ function Login(props) {
 
         // call api check login                
         callApi('tai-khoan/login', 'POST', data).then(res => {
-            if (res.data.checked) {
+            if (res) {
                 localStorage.setItem('userLogin', JSON.stringify(res.data.user))
                 setCheckLogin(true)
             }

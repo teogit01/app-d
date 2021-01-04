@@ -19,7 +19,8 @@ function Register(props) {
             username,
             password
         }
-        callApi('tai-khoan/register', 'POST', data).then(() => {
+        console.log('data',data)
+        callApi('tai-khoan/register','POST', data).then(() => {
             history.goBack()
         })
     }
