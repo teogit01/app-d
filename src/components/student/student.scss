@@ -1,77 +1,85 @@
 .wrap-teach {
-
     width: 100%;
     --height: 800px;
     text-align: left;
 
-    // page teacher    
-    .page-trang-chu,
-    .page-de-thi,
-    .page-ki-thi,
-    .page-nhom,
-    .page-thi {
-        width: 85%;
-        margin: 0 auto;
-        --height: 1000px;
-        // --margin-top: 60px;
-        padding: 20px 0;
+    font-size: 14px;
 
-        .content-page {
-            display: flex;
+    .wrap-page {
+        width: 100%;
 
-            justify-content: space-between;
-            --position: sticky;
-            top: 80px;
+        // page teacher    
+        .page-trang-chu,
+        .page-de-thi,
+        .page-ki-thi,
+        .page-nhom,
+        .page-thi {
+            width: 85%;
+            margin: 0 auto;
+            --height: 1000px;
+            // --margin-top: 60px;
+            padding: 20px 0;
 
-            .left {
-                --width: 250px;
-                width: 35%;
-                max-height: 680px;
-                min-height: 680px;
-                background-color: #fff;
-                overflow: auto;
-                --border-radius: 10px;
-            }
+            .content-page {
+                display: flex;
 
-            .right {
-                // position: sticky;
-                // top: 100px;
-                width: 63%;
-                min-height: 680px;
-                max-height: 680px;
-                background-color: #fff;
-                --box-shadow: 0px 0px 15px #ddd;
-                border: 1px solid #ddd;
-                border-radius: 10px;
-                overflow: auto;
-                padding: 0 20px;
+                justify-content: space-between;
+                --position: sticky;
+                top: 80px;
 
-                --position: relative;
+                .left {
+                    --width: 250px;
+                    width: 35%;
+                    max-height: 680px;
+                    min-height: 680px;
+                    background-color: #fff;
+                    overflow: auto;
+                    --border-radius: 10px;
+                }
 
-                .btn-them-cau-hoi {
-                    --position: sticky;
-                    top: 0px;
-                    text-align: right;
+                .right {
+                    // position: sticky;
+                    // top: 100px;
+                    width: 63%;
+                    min-height: 680px;
+                    max-height: 680px;
+                    background-color: #fff;
+                    --box-shadow: 0px 0px 15px #ddd;
+                    border: 1px solid #ddd;
+                    border-radius: 10px;
+                    overflow: auto;
+                    padding: 0 20px;
+
+                    // background-color: lightgoldenrodyellow;
+                    //background-color: #eee;
+
+                    --position: relative;
+
+                    .btn-them-cau-hoi {
+                        --position: sticky;
+                        top: 0px;
+                        text-align: right;
+                    }
                 }
             }
         }
-    }
 
-    // .ic-add 
-    .ic-init,
-    .ic-init2 {
-        font-size: 25px;
-        position: fixed;
-        --left: 20px;
-        right: 50px;
-        opacity: .5;
+        // .ic-add 
+        .ic-init,
+        .ic-init2 {
+            font-size: 25px;
+            position: fixed;
+            --left: 20px;
+            right: 50px;
+            opacity: .5;
 
-        &:hover {
-            cursor: pointer;
+            &:hover {
+                cursor: pointer;
+            }
         }
-    }
 
-    .ic-init2 {
-        top: 270px;
+        .ic-init2 {
+            top: 270px;
+        }
     }
 }

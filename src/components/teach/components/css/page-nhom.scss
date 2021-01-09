@@ -1,0 +1,132 @@
+.page-nhom {
+    width: 100%;
+    min-height: 600px;
+
+    .title {
+        display: flex;
+        //justify-content: space-between;
+        width: 100%;
+
+        h5 {
+            width: 20%;
+        }
+
+        .chuc-nang {
+            margin-left: 100px;
+            width: 80%;
+
+            display: flex;
+            align-items: center;
+            //justify-content: space-between;
+
+            .search {
+                width: 50%;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+
+                input {
+                    border: none;
+                    border-bottom: 1px solid #eee;
+                    width: 100%;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+
+            .import {
+                width: 30%;
+                margin-left: 50px;
+                display: flex;
+
+                .button {
+                    width: 90px;
+                    border-radius: 5px;
+                    text-align: center;
+                    border: 1px solid #ddd;
+                    background-color: lightseagreen;
+                    transition: all .2s;
+
+                    &:hover {
+                        cursor: pointer;
+                        transform: translateY(2px);
+                        box-shadow: 2px 2px 5px #ddd;
+                        color: #fff;
+                        opacity: .8;
+                        background-color: lightseagreen;
+                        transition: all .2s;
+                    }
+                }
+            }
+        }
+    }
+
+    .nhoms {
+        border: 1px solid #eee;
+        padding: 10px;
+        border-radius: 5px;
+        width: 100%;
+        min-height: 600px;
+        max-height: 600px;
+        overflow: auto;
+
+        .nhom-content {
+            width: 100%;
+            display: flex;
+
+            .nhom-list,
+            .nhom-detail {
+
+                min-height: 500px;
+
+                &-content {
+
+                    &-title {
+                        width: 90%;
+                        height: 45px;
+                        min-height: 45px;
+                        border-bottom: 1px solid #eee;
+                        font-weight: bold;
+                        text-align: center;
+                    }
+
+                    &-item {
+                        width: 100%;
+                        //height: 50px;
+                        min-height: 500px;
+                        max-height: 500px;
+                        overflow: auto;
+
+                        .nhom-actived {
+                            box-shadow: 2px 3px 5px #ddd;
+                            color: lightseagreen;
+                            width: 90%;
+                            border-radius: 5px;
+                        }
+                    }
+                }
+            }
+
+            .nhom-list {
+                width: 25%;
+                border-right: 1px solid #eee;
+            }
+
+            .nhom-detail {
+                width: 80%;
+                padding: 0 10px;
+            }
+        }
+    }
+
+    .icon {
+        opacity: .5;
+        margin-left: 20px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

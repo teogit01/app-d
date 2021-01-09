@@ -17,19 +17,21 @@ function Index() {
     const match = useRouteMatch()
     return (
         <div className='wrap-teach'>
-            <div style={{ height: '150px' }}>
-                banner
-            </div>
-            <Header />
+            <div className='wrap-page'>
+                {/* <div style={{ height: '150px' }}>
+                    banner
+                </div> */}
+                <Header />
 
-            <Switch>
-                {/* <Route path={`${match.url}/trang-chu`} exact component={() => <TrangChu />} /> */}
-                <Route path={`${match.url}/ki-thi`} exact component={() => <KiThi />} />
-                <Route path={`${match.url}/nhom`} exact component={() => <Nhom />} />
-                <Route path={`${match.url}/ki-thi/thi`} component={() => <Thi />} />
-                <Route path={`${match.url}/thong-tin`} component={() => <ThongTin />} />
-                {/* <Route path={`${match.url}/thong-tin/bai-thi/:_idbaithi`} component={() => <ThongTin />} /> */}
-            </Switch>
+                <Switch>
+                    {/* <Route path={`${match.url}/trang-chu`} exact component={() => <TrangChu />} /> */}
+                    <Route path={`${match.url}/ki-thi`} exact component={() => <KiThi />} />
+                    <Route path={`${match.url}/nhom`} exact component={() => <Nhom />} />
+                    <Route path={`${match.url}/ki-thi/thi`} component={() => <Thi />} />
+                    <Route path={`${match.url}/thong-tin`} component={() => <ThongTin />} />
+                    {/* <Route path={`${match.url}/thong-tin/bai-thi/:_idbaithi`} component={() => <ThongTin />} /> */}
+                </Switch>
+            </div>
         </div >
 
     );

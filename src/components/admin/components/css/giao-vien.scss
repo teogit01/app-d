@@ -1,0 +1,179 @@
+.giao-vien {
+    width: 100%;
+    min-height: 600px;
+    max-height: 600px;
+    //max-width: 700px;
+
+    .giaovien-content {
+        width: 100%;
+        min-height: 600px;
+        max-height: 600px;
+        overflow: auto;
+
+        .giaovien-main {
+            min-height: 600px;
+
+            .giaovien-item {
+                .giaovien-item-detail {
+                    width: 95%;
+                    min-height: 400px;
+                    max-height: 550px;
+                    margin: 0 auto;
+                    border: 1px solid #eee;
+                    box-shadow: 5px 5px 5px #ddd;
+
+                    border-radius: 5px;
+                }
+
+                .giaovien-item-detail-header {
+                    width: 100%;
+                    height: 60px;
+                    border-bottom: 1px solid #eee;
+                    display: flex;
+                    align-items: center;
+                    padding: 0 10px;
+
+                    &-item {
+                        width: 150px;
+                        border-right: 1px solid #eee;
+                        text-align: center;
+                        height: 55%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-left: 5px;
+
+                        &:hover {
+                            cursor: pointer;
+                            background-color: #eee;
+                            border-radius: 3px;
+                        }
+                    }
+
+                    .actived {
+                        background-color: #eee;
+                        border-radius: 3px;
+                    }
+                }
+
+                .search {
+                    border: none;
+                    width: 300px;
+                    justify-content: flex-end;
+                    margin-left: 50px;
+
+                    &:hover {
+                        background-color: #fff;
+                    }
+
+                    input {
+                        width: 90%;
+                        border: none;
+                        border-bottom: 1px solid #eee;
+
+                        &:focus {
+                            outline: none;
+                        }
+                    }
+                }
+
+                .giaovien-item-detail-content {
+                    width: 100%;
+                    min-height: 400px;
+                    padding: 10px;
+
+                    &-thongtin,
+                    &-danhsach {
+                        width: 100%;
+                        min-height: 400px;
+                        //display: flex;
+
+                        .avatar {
+                            width: 200px;
+                            height: 250px;
+                            border-radius: 5px;
+                            border: 1px solid #ddd;
+                            margin-right: 20px;
+                        }
+
+                        .thong-tin {
+                            width: 700px;
+
+                            .control {
+                                height: 40px;
+                                display: flex;
+                                //align-items: center;
+                                border-bottom: 1px solid #eee;
+
+                                label {
+                                    display: flex;
+                                    align-items: center;
+                                    font-weight: bold;
+                                    width: 15%;
+                                    height: 40px;
+                                }
+
+                                &-noidung {
+                                    width: 80%;
+                                    display: flex;
+                                    align-items: center;
+                                }
+                            }
+                        }
+                    }
+
+                    &-danhsach {
+                        //display: flex;                    
+                        // width: 90%;
+                        // margin: 0 auto;                        
+                        text-align: center;
+
+                        .control {
+                            display: flex;
+                            border-bottom: 1px solid #eee;
+                            width: 100%;
+                            height: 35px;
+                            align-items: center;
+
+                            .head {
+                                font-weight: bold;
+                                //text-align: left;
+                            }
+
+                            .stt {
+                                width: 50px;
+                                text-align: left;
+                            }
+
+                            .code {
+                                width: 150px;
+                                text-align: left;
+                            }
+
+                            .name,
+                                {
+                                width: 170px;
+                                text-align: left;
+                            }
+
+                            .email {
+                                width: 200px;
+                                text-align: left;
+                            }
+
+                            .status {
+                                border-radius: 5px;
+                                width: 120px;
+                            }
+
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,142 @@
+.page-dethi {
+    width: 100%;
+    min-height: 600px;
+
+    .title {
+        display: flex;
+        //justify-content: space-between;
+        width: 100%;
+
+        h5 {
+            width: 20%;
+        }
+
+        .chuc-nang {
+            margin-left: 100px;
+            width: 80%;
+
+            display: flex;
+            align-items: center;
+            //justify-content: space-between;
+
+            .search {
+                width: 50%;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+
+                input {
+                    border: none;
+                    border-bottom: 1px solid #eee;
+                    width: 100%;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+
+            .import {
+                width: 30%;
+                margin-left: 50px;
+                display: flex;
+
+                .button {
+                    width: 90px;
+                    border-radius: 5px;
+                    text-align: center;
+                    border: 1px solid #ddd;
+                    background-color: lightseagreen;
+                    transition: all .2s;
+
+                    &:hover {
+                        cursor: pointer;
+                        transform: translateY(2px);
+                        box-shadow: 2px 2px 5px #ddd;
+                        color: #fff;
+                        opacity: .8;
+                        background-color: lightseagreen;
+                        transition: all .2s;
+                    }
+                }
+            }
+        }
+    }
+
+    .dethi-main {
+        width: 100%;
+        min-height: 500px;
+        max-height: 550px;
+        border-radius: 5px;
+        border: 1px solid #eee;
+        padding: 10px;
+
+        display: flex;
+
+        .dethi-list,
+        .dethi-detail {
+            //padding: 10px;
+
+            .dethi-list-title,
+            .dethi-detail-title {
+                height: 35px;
+                font-weight: bold;
+                border-bottom: 1px solid #eee;
+                text-align: center;
+            }
+        }
+
+        .dethi-list {
+            width: 23%;
+            min-height: 500px;
+            max-height: 500px;
+            border-right: 1px solid #eee;
+            padding: 0 10px 0 0;
+
+            .dethi-list-content {
+                width: 100%;
+                height: 450px;
+                min-height: 450px;
+                overflow: auto;
+
+                .dethi-list-content-item {
+                    width: 100%;
+                    min-height: 550px;
+                }
+
+                .actived {
+                    color: lightseagreen;
+                    box-shadow: 3px 2px 5px #ddd;
+                }
+            }
+        }
+
+        .dethi-detail {
+            width: 77%;
+            padding: 0 0 0 10px;
+            min-height: 500px;
+            max-height: 500px;
+
+            .dethi-detail-content {
+                width: 100%;
+                height: 450px;
+                min-height: 450px;
+                overflow: auto;
+
+                .dethi-detail-content-item {
+                    width: 100%;
+                    min-height: 550px;
+                }
+            }
+        }
+    }
+
+    .icon {
+        opacity: .5;
+        margin-left: 20px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

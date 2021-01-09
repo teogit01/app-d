@@ -13,9 +13,9 @@ import callApi from 'api/apiCaller'
 // };
 
 const datas = [
-    { name: 'Trang chủ', to: '/student/trang-chu', exact: true },
-    { name: 'Kì thi', to: '/student/ki-thi', exact: false },
-    { name: 'Nhóm', to: '/student/nhom', exact: false },
+    { name: 'Trang chủ', to: '/sinh-vien/trang-chu', exact: true },
+    { name: 'Kì thi', to: '/sinh-vien/ki-thi', exact: false },
+    { name: 'Nhóm', to: '/sinh-vien/nhom', exact: false },
 ]
 function Li({ label, to, activeOnlyWhenExact }) {
     let match = useRouteMatch({
@@ -123,7 +123,7 @@ function Header() {
             {
                 isAlertSuccess && alertSuccess()
             }
-            {!checkLogin ? <Redirect to='/login' /> : ''}
+            {!checkLogin ? <Redirect to='/dang-nhap' /> : ''}
             <div className='teach-header'>
                 <div className='menu-top'>
                     <ul>
@@ -143,32 +143,25 @@ function Header() {
                 {/* <div className='search'><input type='text' className='' placeholder='Tìm kiếm...' /></div> */}
                 <div className='login'>
                     <div>
-                        <Dropdown isOpen={dropdownOpen} toggle={toggle} >
-                            <DropdownToggle tag="a" className="nav-link" caret>
+                        <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+                            <DropdownToggle className="info" caret>
                                 {user ? user[0].ten : 'Đăng nhập'}
                             </DropdownToggle>
                             <DropdownMenu >
-                                <DropdownItem header>Header</DropdownItem>
                                 <DropdownItem onClick={thongtin}>Thông Tin</DropdownItem>
-                                <DropdownItem></DropdownItem>
-                                <DropdownItem text>Dropdown Item Text</DropdownItem>
-                                <DropdownItem disabled>Action (disabled)</DropdownItem>
-                                <DropdownItem divider />
-                                <DropdownItem >alser</DropdownItem>
                                 <DropdownItem onClick={() => togglePassword()}>Đổi mật khẩu</DropdownItem>
-                                <DropdownItem>Quo Action</DropdownItem>
                             </DropdownMenu>
                         </Dropdown>
                     </div>
-                    <div onClick={logout}>{user ? 'Thoát' : ''}</div>
+                    <div className="info" onClick={logout}>{user ? 'Thoát' : ''}</div>
                 </div>
             </div>
 
-            <div className='notify'>
+            {/* <div className='notify'>
                 <marquee >
                     Thông báo ...!
                 </marquee>
-            </div>
+            </div> */}
 
             {/* Modal change password*/}
             <div>

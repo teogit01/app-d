@@ -1,0 +1,104 @@
+.wrap-teach {
+    width: 100%;
+    text-align: left;
+
+    // page teacher    
+    .page-trang-chu,
+    .page-de-thi,
+    .page-ki-thi,
+    .page-nhom {
+        width: 85%;
+        margin: 0 auto;
+        --height: 1000px;
+        min-height: 727px;
+        // --margin-top: 60px;
+        padding: 20px 0;
+
+        .content-page {
+            display: flex;
+
+            justify-content: space-between;
+            --position: sticky;
+            top: 80px;
+
+            .left {
+                --width: 250px;
+                width: 35%;
+                max-height: 680px;
+                min-height: 680px;
+                background-color: #fff;
+                overflow: auto;
+                --border-radius: 10px;
+            }
+
+            .right {
+                // position: sticky;
+                // top: 100px;
+                width: 63%;
+                min-height: 680px;
+                max-height: 680px;
+                background-color: #fff;
+                --box-shadow: 0px 0px 15px #ddd;
+                border: 1px solid #ddd;
+                border-radius: 10px;
+                overflow: auto;
+                padding: 0 20px;
+
+                --position: relative;
+
+                .btn-them-cau-hoi {
+                    --position: sticky;
+                    top: 0px;
+                    text-align: right;
+                }
+            }
+        }
+    }
+
+    // .ic-add 
+    .ic-init,
+    .ic-init2,
+    .ic-init3 {
+        font-size: 25px;
+        position: fixed;
+        --left: 20px;
+        right: 50px;
+        opacity: .5;
+        z-index: 0;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .search {}
+
+    .add-de {
+        top: 230px;
+    }
+
+    .add-cauhoi {
+        top: 260px;
+    }
+
+    .ic-import {
+        top: 275px;
+    }
+
+    .ic-search {
+        --background-color: blue;
+        top: 235px;
+    }
+
+    .ic-add-nhom {
+        top: 313px;
+    }
+
+    .drop-down {
+        display: none;
+        position: fixed;
+        right: 10px;
+        width: 50px;
+
+    }
+}

@@ -1,0 +1,36 @@
+.feature-tai-khoan {
+    .page-main {
+        display: flex;
+
+        .tai-khoan-gv,
+        .tai-khoan-sv {
+            width: 230px;
+            height: 300px;
+            background-color: #fff;
+            border-radius: 10px;
+
+            //margin-left: 10px;
+            margin-right: 10px;
+        }
+    }
+
+    .page-giao-vien {
+
+        .status {
+            border-radius: 5px;
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        .icon-sort {
+            margin-left: 5px;
+        }
+
+        th,
+        td {
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}

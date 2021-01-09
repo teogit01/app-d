@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 KiThiCT.propTypes = {
     kithi: PropTypes.object,
     //dethis: PropTypes.array,
-    nhomActived: PropTypes.array
+    //nhomActived: PropTypes.array
 };
 
 function convert(minute) {
@@ -29,41 +29,47 @@ function convert_tgkt(tgbd, minute) {
 }
 
 function KiThiCT(props) {
-    const { kithi, nhomActived } = props
+    const { kithi } = props
     //const [dethiActived, setDethiActved] = useState(kithi.dethimos[0])
     const [dethisRender, setDethisRender] = useState([])
+    const [dethis, setDethis] = useState([])
     const user = JSON.parse(localStorage.getItem('userLogin'))
+    useEffect(() => {
+        if (kithi && kithi.dethis.length > 0) {
+            setDethis(kithi.dethis)
+        }
+    }, [kithi])
     //console.log('de', dethiActived)
     //console.log('de', dethis)    
     //console.log('kithi ', kithi)
-    useEffect(() => {
-        if (kithi && nhomActived) {
 
-            const load_dethi = async () => {
-                const data = {
-                    iddethis: kithi.dethimos
-                }
-                const result = await callApi('ki-thi/load-de', 'POST', data)
+    // useEffect(() => {
+    //     if (kithi) {
+    //         const load_dethi = async () => {
+    //             const data = {
+    //                 iddethis: kithi.dethimos
+    //             }
+    //             const result = await callApi('ki-thi/load-de', 'POST', data)
 
-                if (nhomActived.sinhviens) {
-                    nhomActived.sinhviens.sort((a, b) => {
-                        if (a.maso < b.maso) {
-                            return -1
-                        }
-                    }).map((sv, idx) => {
-                        if (sv.maso === user[0].maso) {
-                            //setDethisRender([dethisRender[idx % dethisRender.length]])                        
-                            setDethisRender([result.data[idx % result.data.length]])
-                            //setDethiActved([result.data[idx % result.data.length]])
-                        }
-                    })
-                }
-                //setDethisRender(result.data)
-                //setDethiActved(result.data[0])
-            }
-            load_dethi()
-        }
-    }, [kithi, nhomActived])
+    //             if (nhomActived.sinhviens) {
+    //                 nhomActived.sinhviens.sort((a, b) => {
+    //                     if (a.maso < b.maso) {
+    //                         return -1
+    //                     }
+    //                 }).map((sv, idx) => {
+    //                     if (sv.maso === user[0].maso) {
+    //                         //setDethisRender([dethisRender[idx % dethisRender.length]])                        
+    //                         setDethisRender([result.data[idx % result.data.length]])
+    //                         //setDethiActved([result.data[idx % result.data.length]])
+    //                     }
+    //                 })
+    //             }
+    //             //setDethisRender(result.data)
+    //             //setDethiActved(result.data[0])
+    //         }
+    //         //load_dethi()
+    //     }
+    // }, [kithi])
 
     //console.log('nhomAc',nhomA)
     const [modalMk, setModalMk] = useState(false);
@@ -73,8 +79,10 @@ function KiThiCT(props) {
     const toggleXacNhan = () => setModalXacNhan(!modalXacNhan);
 
     const [idDethi, setIdDethi] = useState('')
+    const [dethiSelected, setDethiSelected] = useState('')
     const selectDethi = (dethi) => {
-        setIdDethi(dethi._id)
+        //setIdDethi(dethi._id)
+        setDethiSelected(dethi)
         //setDethiActved(dethi)
         setTgbd(`0${getHours(new Date())}`.slice(-2) + ':' + `0${getMinutes(new Date())}`.slice(-2))
         toggleMk()
@@ -86,7 +94,7 @@ function KiThiCT(props) {
             toggleXacNhan()
             setError('')
             const data = {
-                dethi: dethisRender[0],
+                dethi: dethiSelected,
                 kithi: kithi,
                 sinhvien: user[0]._id,
             }
@@ -113,7 +121,7 @@ function KiThiCT(props) {
     const redirect = () => {
         //history.push(`${match.url}/thi/${kithi._id}/${idDethi}`)             
         const data = {
-            dethi: dethisRender[0],
+            dethi: dethiSelected,
             kithi: kithi,
             thoigian: kithi.thoigian,
             tgbd: tgbd,
@@ -135,8 +143,8 @@ function KiThiCT(props) {
             <div className='wrap-de'>
                 <div className='de-this'>
                     {
-                        dethisRender.length > 0 &&
-                        dethisRender.map(dethi => {
+                        dethis.length > 0 &&
+                        dethis.map(dethi => {
                             return (
                                 <div key={dethi._id} className='de-thi' onClick={() => selectDethi(dethi)}>
                                     {/* <div className='remove'>X</div> */}
@@ -157,7 +165,7 @@ function KiThiCT(props) {
             {/* modal select de thi */}
             <div>
                 <Modal isOpen={modalMk}>
-                    <ModalHeader toggle={toggleMk}>Nhập mật khẩu kì thi {dethisRender.length > 0 && dethisRender[0].tieude}</ModalHeader>
+                    <ModalHeader toggle={toggleMk}>Nhập mật khẩu kì thi {kithi && kithi.tieude}</ModalHeader>
                     <ModalBody>
                         <input type='password' className='form-control' name='password' onChange={onChange} />
                         {error != '' && error}

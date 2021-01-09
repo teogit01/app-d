@@ -1,0 +1,53 @@
+.giao-vien {
+    width: 100%;
+    text-align: left;
+
+    .thongtin {
+
+        .thongtin-1 {
+            width: 100%;
+            min-height: 300px;
+            box-shadow: 5px 5px 5px #ddd;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 10px;
+
+            .title {}
+
+            .thongtin-chitiet {
+                width: 100%;
+                padding: 20px;
+                display: flex;
+
+                .avatar {
+                    width: 250px;
+                    height: 250px;
+                    border: 1px solid #ddd;
+                }
+
+                .chitiet {
+                    width: 100%;
+                    min-height: 300px;
+                    padding: 0 20px;
+                    margin-left: 20px;
+                    //border: 1px solid #ddd;
+
+                    .control {
+                        display: flex;
+                        height: 35px;
+                        border-bottom: 1px solid #ddd;
+                        //align-items: flex-end;
+
+                        label {
+                            width: 100px;
+
+                            font-weight: bold;
+                        }
+                    }
+
+                }
+            }
+        }
+
+    }
+}

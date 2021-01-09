@@ -1,0 +1,16 @@
+.dethi {
+    width: 100%;
+    height: 80px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    .dethi-item {
+        width: 100%;
+    }
+}

@@ -1,0 +1,120 @@
+.page-thongtin {
+    width: 100%;
+    min-height: 600px;
+
+    .title {
+        display: flex;
+        //justify-content: space-between;
+        width: 100%;
+
+        h5 {
+            width: 20%;
+        }
+
+    }
+
+    .thongtin-content {
+        width: 100%;
+        min-height: 500px;
+        display: flex;
+
+        .left {}
+
+        .avatar {
+            width: 25%;
+            min-height: 400px;
+
+            img {
+                border-radius: 5px;
+                border: 1px solid #ddd;
+                width: 220px;
+                height: 280px;
+            }
+        }
+
+        .info {
+            width: 70%;
+            min-height: 400px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 20px;
+
+            .control {
+                display: flex;
+                border-bottom: 1px solid #ddd;
+                height: 35px;
+
+                label {
+                    font-weight: bold;
+                    width: 100px;
+                }
+
+                input {
+                    border: none;
+                    background-color: #fff;
+                    width: 300px;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+
+                align-items: center;
+
+                .doi-mk {
+
+                    display: flex;
+                    align-items: center;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+
+                    font-size: 12px;
+                }
+
+                &:last-child {
+                    border-bottom: none;
+                }
+
+            }
+
+            // .address {
+            //     height: 60px;
+            //     display: flex;
+            //     align-items: flex-start;
+            // }
+
+
+            .button {
+                width: 150px;
+                text-align: center;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 5px;
+                margin-left: 530px;
+                background-color: lightseagreen;
+
+                &:hover {
+                    color: #fff;
+                    cursor: pointer;
+                    opacity: .8;
+                    transition: all .2s;
+                }
+
+            }
+        }
+    }
+
+
+    .icon {
+        opacity: .5;
+        margin-left: 20px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

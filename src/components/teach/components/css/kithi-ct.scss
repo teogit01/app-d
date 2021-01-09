@@ -1,0 +1,168 @@
+.kithi-chitiet {
+    .title {
+        width: 100%;
+        min-height: 45px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #eee;
+
+        .title-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 120px;
+            height: 25px;
+            border-right: 1px solid #ddd;
+            margin-left: 5px;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .actived {
+            color: lightseagreen;
+            background-color: #eee;
+            border-radius: 5px;
+        }
+    }
+
+    .detail {
+        width: 100%;
+        min-height: 500px;
+        max-height: 500px;
+        overflow: auto;
+
+        .detail-content {
+            width: 100%;
+
+            .thongtin,
+            .dethi,
+            .nhom {
+                display: none;
+                margin-top: 20px;
+                width: 100%;
+                min-height: 300px;
+                padding: 10px;
+
+                .thongtin-item {
+                    box-shadow: 3px 3px 5px #ddd;
+
+                    .control {
+                        display: flex;
+                        height: 40px;
+
+                        label {
+                            font-weight: bold;
+                            width: 150px;
+                        }
+
+                        input {
+                            border: none;
+                            background-color: #fff;
+
+                            &:focus {
+                                outline: none;
+                            }
+                        }
+
+                        .trang-thai {
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+
+                        .batdau {
+                            background-color: lightseagreen;
+                            height: 20px;
+                            width: 80px;
+                            text-align: center;
+                            border-radius: 5px;
+
+                            &:hover {
+                                opacity: .8;
+                                cursor: pointer;
+                            }
+                        }
+
+                        .dangthi {
+                            color: blue;
+                            font-weight: bold;
+                        }
+
+                        .dathi {
+                            color: red;
+                            font-weight: bold;
+                        }
+
+                        .chuathi {
+                            color: lightseagreen;
+                            font-weight: bold;
+                        }
+
+                        .doi-mk {
+                            width: 100px;
+                            margin-left: 30px;
+                            font-size: 13px;
+                            font-style: unset;
+
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+
+                border-bottom: none;
+
+                .dethi-item {
+                    width: 100%;
+                    min-height: 50px;
+
+                    .dethi-item1 {
+                        border-radius: 5px;
+                        width: 60%;
+                        height: 130px;
+                        box-shadow: 3px 3px 5px #ddd;
+                        margin-bottom: 5px;
+                        padding: 10px;
+
+                        .control {
+                            display: flex;
+
+                            label {
+                                font-weight: bold;
+                                width: 100px;
+                            }
+
+                        }
+                    }
+                }
+
+                .nhom-item {
+                    width: 100%;
+
+
+                    //min-height: 50px;
+                    .nhom-item1 {
+                        box-shadow: 3px 3px 5px #ddd;
+                        margin-bottom: 25px;
+
+                        .control {
+                            display: flex;
+
+                            label {
+                                font-weight: bold;
+                                width: 100px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .show {
+                display: block;
+            }
+        }
+    }
+}
