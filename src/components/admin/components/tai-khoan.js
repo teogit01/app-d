@@ -26,15 +26,13 @@ function Index(props) {
                         <div
                             onClick={() => { _detail('giao-vien') }}
                         >
-                            <p>Loại người dùng: Giáo viên</p>
-                            <p>Tổng số tài khoản: 40</p>
-                            <p>Tài khoản đang hoạt động: 20</p>
+                            <div>Giáo viên</div>
                         </div>
                     </div>
                     <div className='taikhoan-sv'
                         onClick={() => { _detail('sinh-vien') }}
                     >
-
+                        <div>Thí sinh</div>
                     </div>
                 </div>
             </div>

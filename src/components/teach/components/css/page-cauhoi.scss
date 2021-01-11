@@ -104,8 +104,8 @@
                 border: none;
                 border-radius: 0px;
                 border-bottom: none;
-                min-height: 500px;
-                max-height: 500px;
+                //min-height: 500px;
+                //max-height: 500px;
                 padding-top: 20px;
                 font-weight: normal;
                 text-align: left;
@@ -114,6 +114,20 @@
                 .mon-content-item,
                 .cauhoi-content-item {
                     min-height: 500px;
+                }
+
+                .remove {
+                    position: absolute;
+                    right: 0;
+                    visibility: hidden;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+
+                &:hover .remove {
+                    visibility: visible;
                 }
 
                 //background-color: red;

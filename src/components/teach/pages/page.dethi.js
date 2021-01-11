@@ -184,7 +184,13 @@ function PageDethi(props) {
                 if (newDethis.length > 0) {
                     setDethiActived(newDethis[0])
                 } else {
-                    setDethiActived('')
+                    const newDethi = dethiOrigin.filter(dethi => dethi.tieude.toUpperCase().indexOf(value.toUpperCase()) !== -1)
+                    setDethis(newDethi)
+                    if (newDethi.length > 0) {
+                        setDethiActived(newDethi[0])
+                    } else {
+                        setDethiActived('')
+                    }
                 }
             }, 1000)
         }
@@ -241,6 +247,23 @@ function PageDethi(props) {
         setCauhoiSelected(getId)
     }
 
+    const xoade = dethi => {
+        const data = {
+            _iddethi: dethi._id,
+            _iduser: user[0]._id
+        }
+        callApi('de-thi/remove', 'POST', data).then(res => {
+            const newDethis = dethis.filter(item => item._id !== dethi._id)
+            setDethis(newDethis)
+        })
+    }
+    useEffect(() => {
+        if (dethis.length > 0) {
+            setDethiActived(dethis[0])
+        } else {
+            setDethiActived('')
+        }
+    }, [dethis])
     return (
         <div className='page-dethi'>
             <div className='title'>
@@ -280,6 +303,9 @@ function PageDethi(props) {
                                                     { 'actived': dethi._id === dethiActived._id }
                                                 )}
                                                 key={dethi._id}>
+                                                <div className='remove'
+                                                    onClick={() => xoade(dethi)}
+                                                >x</div>
                                                 <Dethi dethi={dethi} />
                                             </div>
                                         )

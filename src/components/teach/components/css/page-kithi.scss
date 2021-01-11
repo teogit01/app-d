@@ -93,7 +93,24 @@
             padding: 0 0 0 10px;
 
             .kithi-list-content {
-                .kithi-list-content-item {}
+                .kithi-list-content-item {
+                    position: relative;
+
+                    .remove {
+                        position: absolute;
+                        width: 20px;
+                        right: 0;
+                        display: none;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+
+                    &:hover .remove {
+                        display: block;
+                    }
+                }
 
                 .actived {
                     color: lightseagreen;

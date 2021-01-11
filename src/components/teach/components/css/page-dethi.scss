@@ -102,6 +102,22 @@
                 .dethi-list-content-item {
                     width: 100%;
                     min-height: 550px;
+                    position: relative;
+
+                    .remove {
+                        width: 20px;
+                        position: absolute;
+                        right: 0;
+                        display: none;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+
+                    &:hover .remove {
+                        display: block;
+                    }
                 }
 
                 .actived {

@@ -9,10 +9,11 @@ import Select from 'react-select'
 import callApi from 'api/apiCaller';
 KiThiCt.propTypes = {
     kithi: PropTypes.object,
+    result: PropTypes.func
 };
 
 function KiThiCt(props) {
-    const { kithi, updateKT } = props
+    const { kithi, updateKT, result } = props
     const [tab, setTab] = useState('thongtin')
     const [optionDT, setOptionDT] = useState([])
     const [optionN, setOptionN] = useState([])
@@ -21,7 +22,7 @@ function KiThiCt(props) {
     const [tt, setTT] = useState(false)
     const [ttr, setTTR] = useState('')
     const user = JSON.parse(localStorage.getItem('userLogin'))
-    console.log(kithi)
+    //console.log(kithi)
     useEffect(() => {
         if (kithi) {
             callApi('de-thi/mon', 'POST', { _idmon: kithi.mon }).then(res => {
@@ -81,7 +82,7 @@ function KiThiCt(props) {
             }
             callApi('ki-thi/them-de', 'POST', data).then(res => {
                 if (res.data.kithi) {
-                    setDethis(res.data.kithi.dethis)
+                    result(res.data.kithi)
                 }
             })
             toggleDT()
@@ -92,8 +93,11 @@ function KiThiCt(props) {
                 _idkithi: kithi._id
             }
             callApi('ki-thi/them-nhom', 'POST', data).then(res => {
-                console.log('daa', res.data)
+                if (res.data.kithi) {
+                    result(res.data.kithi)
+                }
             })
+            toggleN()
         }
     }
     const [dethiSelected, setDethiSelected] = useState([])

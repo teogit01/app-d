@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './../components/css/page-kithi.scss'
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
@@ -17,6 +17,7 @@ function PageKithi(props) {
     const [kithis, setKithis] = useState([])
     const [mons, setMons] = useState([])
     const [giaovien, setGiaoVien] = useState('')
+    const [kithiOrigin, setKithiOrigin] = useState([])
     const user = JSON.parse(localStorage.getItem('userLogin'))
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('userLogin'))
@@ -35,6 +36,7 @@ function PageKithi(props) {
     useEffect(() => {
         if (giaovien && giaovien.kithis && giaovien.kithis.length > 0) {
             setKithis(giaovien.kithis)
+            setKithiOrigin(giaovien.kithis)
         } else {
             setKithis([])
         }
@@ -44,6 +46,8 @@ function PageKithi(props) {
     useEffect(() => {
         if (kithis && kithis.length > 0) {
             setKithiActived(kithis[0])
+        } else {
+            setKithiActived('')
         }
     }, [kithis])
 
@@ -62,6 +66,7 @@ function PageKithi(props) {
     const [time, setTime] = useState('')
     const [date, setDate] = useState('')
     const [mon, setMon] = useState('')
+    const [keySearch, setKeySearch] = useState('')
     const [namhoc, setNamhoc] = useState('')
     const [pass, setPass] = useState('')
     const _reset = () => {
@@ -73,6 +78,7 @@ function PageKithi(props) {
         setDate('')
         setMon('')
     }
+    const typingTimeoutRef = useRef(null)
     const _onChange = e => {
         const name = e.target.name
         const value = e.target.value
@@ -90,6 +96,27 @@ function PageKithi(props) {
             setPass(value)
         if (name == 'mon')
             setMon(value)
+        if (name === 'search') {
+            setKeySearch(value)
+            if (typingTimeoutRef.current) {
+                clearTimeout(typingTimeoutRef.current)
+            }
+            typingTimeoutRef.current = setTimeout(() => {
+                const newKithis = kithiOrigin.filter(kithi => kithi.ma.toUpperCase().indexOf(value.toUpperCase()) !== -1)
+                setKithis(newKithis)
+                if (newKithis.length > 0) {
+                    setKithiActived(newKithis[0])
+                } else {
+                    const newKithi = kithiOrigin.filter(kithi => kithi.tieude.toUpperCase().indexOf(value.toUpperCase()) !== -1)
+                    setKithis(newKithi)
+                    if (newKithi.length > 0) {
+                        setKithiActived(newKithi[0])
+                    } else {
+                        setKithiActived('')
+                    }
+                }
+            }, 1000)
+        }
     }
     const _onSubmit = type => {
         if (type === 'KT') {
@@ -119,19 +146,29 @@ function PageKithi(props) {
             setKithiActived(value)
         }
     }
-    // const updateKT = kithi => {
-    //     let idx = -1
-    //     kithis.map((item, index) => {
-    //         if (item._id === kithi._id)
-    //             idx = index
-    //     })
-    //     if (idx !== -1) {
-    //         const newKithis = [...kithis.slice(0, idx), kithi, ...kithis.slice(idx + 1, kithis.length)]
-    //         setKithis(newKithis)
-    //         setKithiActived(kithi)
-    //     }
+    const _resultNhom = (kithi) => {
+        let idx = -1
+        kithis.map((item, index) => {
+            if (item._id === kithi._id)
+                idx = index
+        })
+        if (idx !== -1) {
+            const newKithis = [...kithis.slice(0, idx), kithi, ...kithis.slice(idx + 1, kithis.length)]
+            setKithis(newKithis)
+            setKithiActived(kithi)
+        }
+    }
 
-    // }
+    const xoakithi = kithi => {
+        const data = {
+            _idkithi: kithi._id,
+            _iduser: user[0]._id
+        }
+        //console.log(data)
+        const newKithis = kithis.filter(item => item._id !== kithi._id)
+        setKithis(newKithis)
+        callApi('ki-thi/remove', 'POST', data)
+    }
     return (
         <div className='page-kithi'>
             <div className='title'>
@@ -140,8 +177,13 @@ function PageKithi(props) {
                 </h5>
                 <div className='chuc-nang'>
                     <div className='search'>
-                        {/* <input type='text' placeholder='tìm kiếm' name='search' value={keySearch} onChange={_changeValue} />
-                        <FontAwesomeIcon className='icon' icon="search" /> */}
+                        <input type='text' placeholder='tìm kiếm' name='search' value={keySearch} onChange={_onChange} />
+                        <FontAwesomeIcon className='icon' icon="search" />
+                    </div>
+                    <div className='import'>
+                        <label>
+                            {/* {checkIP && <div className='button' onClick={() => setCheckIP(false)}>Huỷ</div>} */}
+                        </label>
                     </div>
                 </div>
             </div>
@@ -162,6 +204,9 @@ function PageKithi(props) {
                                                 onClick={() => _actived('KT', kithi)}
                                                 className={kithi._id === kithiActived._id ? 'actived' : ''}
                                             >
+                                                <div
+                                                    onClick={() => xoakithi(kithi)}
+                                                    className='remove'>x</div>
                                                 <Kithi kithi={kithi} />
                                             </div>
                                         )
@@ -172,7 +217,7 @@ function PageKithi(props) {
                     </div>
                 </div>
                 <div className='kithi-detail'>
-                    <KithiCT kithi={kithiActived} />
+                    <KithiCT kithi={kithiActived} result={_resultNhom} />
                     {/* <div className='kithi-detail-title'></div>
                     <div className='kithi-detail-content'>
                         <div className='kithi-detail-content-item'>

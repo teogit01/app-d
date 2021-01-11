@@ -4,15 +4,22 @@ import PropTypes from 'prop-types';
 
 Cauhoi.propTypes = {
     cauhoi: PropTypes.object,
-    idx: PropTypes.number
+    idx: PropTypes.number,
+    remove: PropTypes.func
 };
 
 function Cauhoi(props) {
-    const { cauhoi, idx } = props
+    const { cauhoi, idx, remove } = props
+    const _remove = cauhoi => {
+        if (remove) {
+            remove(cauhoi)
+        }
+    }
     return (
         <div className='cauhoi'>
             <div className={idx % 2 === 0 ? 'cauhoi-item' : 'cauhoi-item cauhoi-item-chan'}>
                 <div className='cauhoi-item-title'>
+                    <div className='remove1' onClick={() => _remove(cauhoi)}>x</div>
                     <div className='stt'>
                         <b>Câu {idx + 1}:</b>
                     </div>

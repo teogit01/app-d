@@ -130,6 +130,11 @@ function PageCauhoi(props) {
             setCauhois([])
         }
     }, [monActived])
+    useEffect(() => {
+        if (mons.length > 0) {
+            setMonActived(mons[0])
+        }
+    }, [mons])
     const _change = (type, value) => {
         if (type === 'mon') {
             setMonActived(value)
@@ -225,9 +230,14 @@ function PageCauhoi(props) {
                 }
                 else {
                     setMonActived('')
-                    //finc cau hoi
-                    // const newCauhoi = allCauhoi.filter(cauhoi => cauhoi.noidung.toUpperCase().indexOf(value.toUpperCase() !== -1))
-                    // setCauhois(newCauhoi)
+                    //find mon
+                    const newMon = monOrigin.filter(mon => mon.ten.toUpperCase().indexOf(value.toUpperCase()) !== -1)
+                    setMons(newMon)
+                    if (newMon.length > 0) {
+                        setMonActived(newMon[0])
+                    } else {
+                        setMonActived('')
+                    }
                 }
             }, 1000)
         }
@@ -247,6 +257,7 @@ function PageCauhoi(props) {
                 if (res.data.mon) {
                     const newMons = [res.data.mon, ...mons]
                     setMons(newMons)
+                    setMonActived(res.data.mon)
                 }
             })
             toggleMon()
@@ -320,6 +331,41 @@ function PageCauhoi(props) {
 
     }
 
+    const _remove = (type, value) => {
+        if (type === 'mon') {
+            const data = {
+                _idmon: value._id,
+                _iduser: user[0]._id
+            }
+            callApi('mon/remove', 'POST', data).then(res => {
+                const newMons = mons.filter((item, idx) => item._id !== value._id)
+                setMons(newMons)
+            })
+
+        }
+    }
+
+    // xoa cau hoi
+    const _removeCauhoi = cauhoi => {
+        const newCauhois = cauhois.filter(item => item._id !== cauhoi._id)
+        setCauhois(newCauhois)
+        const data = {
+            ch: cauhoi
+        }
+        callApi('cau-hoi/remove', 'POST', data).then(res => {
+            if (res.data.mon) {
+                setMonActived(res.data.mon)
+                let idx = -1
+                mons.map((item, index) => {
+                    if (item._id === res.data.mon._id)
+                        idx = index
+                })
+                if (idx !== -1) {
+                    setMons([...mons.slice(0, idx), res.data.mon, ...mons.slice(idx + 1, mons.length)])
+                }
+            }
+        })
+    }
     return (
         <div className='page-cauhoi'>
             <div className='title'>
@@ -376,6 +422,10 @@ function PageCauhoi(props) {
                                                 className={mon._id === monActived._id ? 'mon-actived' : ''}
                                                 onClick={(e) => _change('mon', mon)}
                                             >
+
+                                                <div className='remove'
+                                                    onClick={() => _remove('mon', mon)}
+                                                >x</div>
                                                 <Mon mon={mon} cauhois={cauhois} monActived={monActived} />
                                             </div>
                                         )
@@ -398,7 +448,7 @@ function PageCauhoi(props) {
                                 (cauhois && cauhois.length > 0) ?
                                     cauhois.map((cauhoi, idx) => {
                                         return (
-                                            <Cauhoi cauhoi={cauhoi} idx={idx} />
+                                            <Cauhoi cauhoi={cauhoi} idx={idx} remove={_removeCauhoi} />
                                         )
                                     })
                                     : <div><i>Không có câu hỏi</i></div>
